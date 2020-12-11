@@ -80,43 +80,35 @@ class Solution:
         if len(set(senate)) == 1:
             return "Radiant" if senate[0] == "R" else "Dire"
 
-        cls2num = {"D":0, "R":1}
-        d_head, r_head = Node(None), Node(None)
-        camp = [d_head, r_head]
-        died = set()
-
+        d, r, n = set(), set(), len(senate)
         for index, cls in enumerate(senate):
-            type_num = cls2num[cls]
-            camp[type_num].next = Node(index)
-            camp[type_num] = camp[type_num].next
-        camp[0], camp[1] = d_head, r_head
+            if cls == 'R':
+                r.add(index)
+            else:
+                d.add(index)
 
         while True:
-            # 新一轮
-            d, r = d_head.next, r_head.next
-            while d or r:
-                # 遍历这一轮
-                if r is None:
-                    r_head.next = r_head.next.next  # 如果r
-                    d = d.next
-                elif d is None:
-                    d_head.next = d_head.next.next
-                    r = r.next
-                elif d.value < r.value:
-                    r_head.next = r_head.next.next # r被刀
-                    d = d.next                     # 下一个d
-                    r = r_head.next
-                else:
-                    d_head.next = d_head.next.next # d被刀
-                    r = r.next                     # 下一个r
-                    d = d_head.next
+            for i in range(len(senate)):
+                # 遍历每一轮
+                if i in d:
+                    enemy = i + 1 if i + 1 < n else 0
+                    while enemy not in r:
+                        enemy = enemy + 1 if enemy + 1 < n else 0
+                    r.remove(enemy)
 
-                if d_head.next is None:
-                    return "Radiant"
-                if r_head.next is None:
+                elif i in r:
+                    enemy = i + 1 if i + 1 < n else 0
+                    while enemy not in d:
+                        enemy = enemy + 1 if enemy + 1 < n else 0
+                    d.remove(enemy)
+
+                if len(r) == 0:
                     return "Dire"
+                elif len(d) == 0:
+                    return "Radiant"
+
 
 
 # leetcode submit region end(Prohibit modification and deletion)
-test = "DRRDRDRDRDDRDRDR"
+test = "DRRRDD" # DRRDRDRDRDDRDRDR
 print(Solution().predictPartyVictory(test))
