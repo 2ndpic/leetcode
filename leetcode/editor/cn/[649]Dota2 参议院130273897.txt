@@ -1,0 +1,40 @@
+class Solution:
+    def predictPartyVictory(self, senate: str) -> str:
+        camp = {'R':[], 'D':[]}
+        for index, cls in enumerate(senate):
+            camp[cls].append(index)
+        if len(set(senate)) == 1:
+            return "Radiant" if senate[0] == "R" else "Dire"
+
+        while True:
+            # 新一轮
+            D, R = camp['D'], camp['R']
+            d, r = 0, 0
+            while d < len(D) or r < len(R) :
+                # 遍历这一轮
+                if d >= len(D):
+                    idx = R[r]
+                elif r >= len(R):
+                    idx = D[d]
+                else:
+                    idx = min(D[d], R[r])
+                cls = senate[idx]
+                if cls == 'R':
+                    enemy = 'D'
+                    r += 1
+                else:
+                    enemy = 'R'
+                    d += 1
+                camp[enemy].pop()                      # 敌方最后一个出局
+                if len(camp[enemy]) == 0:
+                    return "Radiant" if cls == "R" else "Dire"
+
+
+
+        
+
+# total_testcases:81
+# total_correct:72
+# input_formatted:"DRDRR"
+# expected_output:"Dire"
+# code_output:"Radiant"
