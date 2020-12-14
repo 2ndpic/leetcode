@@ -69,46 +69,24 @@ from collections import Counter
 如果后置位没有敌人了，就刀其前置位最远那个敌人，因为他下个回合最先开始刀人
 
 '''
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
-
-
+from collections import deque
 class Solution:
     def predictPartyVictory(self, senate: str) -> str:
-        if len(set(senate)) == 1:
-            return "Radiant" if senate[0] == "R" else "Dire"
-
-        d, r, n = set(), set(), len(senate)
+        d, r, n = deque(), deque(), len(senate)
         for index, cls in enumerate(senate):
             if cls == 'R':
-                r.add(index)
+                r.append(index)
             else:
-                d.add(index)
+                d.append(index)
 
-        while True:
-            for i in range(len(senate)):
-                # 遍历每一轮
-                if i in d:
-                    enemy = i + 1 if i + 1 < n else 0
-                    while enemy not in r:
-                        enemy = enemy + 1 if enemy + 1 < n else 0
-                    r.remove(enemy)
+        while d and r:
+            if d[0] < r[0]:
+                d.append(d[0]+n)
+            else:
+                r.append(r[0]+n)
+            d.popleft()
+            r.popleft()
 
-                elif i in r:
-                    enemy = i + 1 if i + 1 < n else 0
-                    while enemy not in d:
-                        enemy = enemy + 1 if enemy + 1 < n else 0
-                    d.remove(enemy)
-
-                if len(r) == 0:
-                    return "Dire"
-                elif len(d) == 0:
-                    return "Radiant"
-
-
+        return "Dire" if d else "Radiant"
 
 # leetcode submit region end(Prohibit modification and deletion)
-test = "DRRRDD" # DRRDRDRDRDDRDRDR
-print(Solution().predictPartyVictory(test))
