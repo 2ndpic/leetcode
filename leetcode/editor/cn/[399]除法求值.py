@@ -61,58 +61,108 @@
 from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
 
-class Node:
-    def __init__(self, name=None):
-        self.name = name
-        self.parent = self
-        self.rank = 0
-        self.value = 1
-        self.nodes = {self}
-
-def union(u, v, ratio):
-    pu = find(u)
-    pv = find(v)
-    ratio = v.value * ratio / u.value
-    if pu == pv:
-        return False
-    elif pu.rank > pv.rank:
-        pv.parent = pu
-        for each in pu.nodes:
-            each.value *= ratio
-        pu.nodes = pu.nodes.union(pv.nodes)
-    elif pv.rank > pu.rank:
-        pu.parent = pv
-        for each in pu.nodes:
-            each.value *= ratio
-        pv.nodes = pv.nodes.union(pu.nodes)
-    else:
-        pv.parent = pu
-        for each in pu.nodes:
-            each.value *= ratio
-        pu.nodes = pu.nodes.union(pv.nodes)
-        pu.rank += 1
-    return True
-
-def find(u):
-    if u.parent == u:
-        return u
-    u.parent = find(u.parent)
-    return u.parent
+# class Node:
+#     def __init__(self, name=None):
+#         self.name = name
+#         self.parent = self
+#         self.rank = 0
+#         self.value = 1
+#         self.nodes = {self}
+#
+# def union(u, v, ratio):
+#     pu = find(u)
+#     pv = find(v)
+#     ratio = v.value * ratio / u.value
+#     if pu == pv:
+#         return False
+#     elif pu.rank > pv.rank:
+#         pv.parent = pu
+#         for each in pu.nodes:
+#             each.value *= ratio
+#         pu.nodes = pu.nodes.union(pv.nodes)
+#     elif pv.rank > pu.rank:
+#         pu.parent = pv
+#         for each in pu.nodes:
+#             each.value *= ratio
+#         pv.nodes = pv.nodes.union(pu.nodes)
+#     else:
+#         pv.parent = pu
+#         for each in pu.nodes:
+#             each.value *= ratio
+#         pu.nodes = pu.nodes.union(pv.nodes)
+#         pu.rank += 1
+#     return True
+#
+# def find(u):
+#     if u.parent == u:
+#         return u
+#     u.parent = find(u.parent)
+#     return u.parent
+#
+# class Solution:
+#     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+#         all_vars = dict()
+#         for (u, v) , ratio in zip(equations, values):
+#             u, v = all_vars.setdefault(u,Node(u)), all_vars.setdefault(v, Node(v))
+#             union(u, v, ratio)
+#
+#         res = []
+#         for u, v in queries:
+#             u, v = all_vars.get(u, Node()), all_vars.get(v, Node())
+#             if find(u) != find(v):
+#                 res.append(-1)
+#             else:
+#                 res.append(u.value/v.value)
+#
+#         return res
+#
+def dfs(g, start, end, visited, value=1):
+    if start == end:
+        return value
+    for i in g[start].keys():
+        if not visited[i]:
+            visited[i] = True
+            tmp = dfs(g, i, end, visited, value*g[start][i])
+            visited[i] = False
+            if tmp is not None:
+                return tmp
+    return None
 
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-        all_vars = dict()
-        for (u, v) , ratio in zip(equations, values):
-            u, v = all_vars.setdefault(u,Node(u)), all_vars.setdefault(v, Node(v))
-            union(u, v, ratio)
+        vars2idx = {}
+        idx = 0
+        for u, v in equations:
+            if u not in vars2idx:
+                vars2idx[u] = idx
+                idx += 1
+            if v not in vars2idx:
+                vars2idx[v] = idx
+                idx += 1
 
+        # 建邻接表
+        g = [{} for i in range(len(vars2idx))]
+        for (u, v), ratio in zip(equations, values):
+            u, v = vars2idx[u], vars2idx[v]
+            g[u][v] = ratio
+            g[v][u] = 1 / ratio
+
+        # DFS求解
         res = []
+        visited = [False] * len(vars2idx)
         for u, v in queries:
-            u, v = all_vars.get(u, Node()), all_vars.get(v, Node())
-            if find(u) != find(v):
-                res.append(-1)
+            u, v = vars2idx.get(u, None), vars2idx.get(v, None)
+            if (u is not None) and (v is not None):
+                visited[u] = True
+                tmp = dfs(g, u, v, visited)
+                res.append(-1 if tmp is None else tmp)
+                visited[u] = False
             else:
-                res.append(u.value/v.value)
-
+                res.append(-1)
         return res
 # leetcode submit region end(Prohibit modification and deletion)
+equations = [["x1","x2"],["x2","x3"],["x3","x4"],["x4","x5"]]
+values = [3.0,4.0,5.0,6.0]
+queries = [["x1","x5"],["x5","x2"],["x2","x4"],["x2","x2"],["x2","x9"],["x9","x9"]]
+
+print(Solution().calcEquation(equations, values, queries))
