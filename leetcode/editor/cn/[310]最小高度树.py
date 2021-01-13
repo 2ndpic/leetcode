@@ -92,7 +92,7 @@ class Solution:
                         q.append(v)
         return res
 # leetcode submit region end(Prohibit modification and deletion)
-n = 1
-edges = []
+n = 2
+edges = [[0, 1]]
 
 print(Solution().findMinHeightTrees(n, edges))
