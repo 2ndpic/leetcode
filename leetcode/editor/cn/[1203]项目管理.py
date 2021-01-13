@@ -109,8 +109,8 @@ class Solution:
 
 
 # leetcode submit region end(Prohibit modification and deletion)
-n = 5
-m = 5
-group = [2,0,-1,3,0]
-beforeItems = [[2,1,3],[2,4],[],[],[]]
+n = 3
+m = 2
+group = [0, 1, 0]
+beforeItems = [[2], [2], []]
 print(Solution().sortItems(n, m, group, beforeItems))
