@@ -155,6 +155,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[565]数组嵌套.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[565]数组嵌套.py" />
+              <option name="questionId" value="565" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[649]Dota2 参议院.py">
           <value>
             <LeetcodeEditor>
@@ -192,6 +200,14 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[931]下降路径最小和.py" />
               <option name="questionId" value="967" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[947]移除最多的同行或同列石头.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[947]移除最多的同行或同列石头.py" />
+              <option name="questionId" value="984" />
             </LeetcodeEditor>
           </value>
         </entry>
