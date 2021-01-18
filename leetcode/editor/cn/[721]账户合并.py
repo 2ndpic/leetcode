@@ -37,55 +37,75 @@
 #  
 #  Related Topics 深度优先搜索 并查集 
 #  👍 156 👎 0
-
+# def find(u, parents):
+#     if u == parents[u]:
+#         return u
+#     parents[u] = find(parents[u], parents)
+#     return parents[u]
+# def union(u, v, parents, ranks):
+#     pu, pv = find(u, parents), find(v, parents)
+#     ru, rv = ranks[pu], ranks[pv]
+#     if pu == pv:
+#         return False
+#     if ru > rv:
+#         parents[pv] = pu
+#     elif rv > ru:
+#         parents[pu] = pv
+#     else:
+#         parents[pv] = pu
+#         ranks[pu] += 1
+#     return True
+#
+# class Solution:
+#     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+#         n = len(accounts)
+#         parents = [i for i in range(n)]
+#         ranks = [0 for _ in range(n)]
+#         mail2accidx = {}
+#         for i in range(n):
+#             for j in range(1, len(accounts[i])):
+#                 mail = accounts[i][j]
+#                 if mail not in mail2accidx:
+#                     mail2accidx[mail] = i
+#                 else:
+#                     union(i, mail2accidx[mail], parents, ranks)
+#         d = {}
+#         for key, value in mail2accidx.items():
+#             d.setdefault(find(value, parents), []).append(key)
+#         res = []
+#         for key, value in d.items():
+#             name = accounts[key][0]
+#             res.append([name] + sorted(value))
+#         return res
+# from typing import List
 from typing import List
+import collections
 # leetcode submit region begin(Prohibit modification and deletion)
-
-def find(u, parents):
-    if u == parents[u]:
-        return u
-    parents[u] = find(parents[u], parents)
-    return parents[u]
-def union(u, v, parents, ranks):
-    pu, pv = find(u, parents), find(v, parents)
-    ru, rv = ranks[pu], ranks[pv]
-    if pu == pv:
-        return False
-    if ru > rv:
-        parents[pv] = pu
-    elif rv > ru:
-        parents[pu] = pv
-    else:
-        parents[pv] = pu
-        ranks[pu] += 1
-    return True
+def dfs(g, start, visited, paths):
+    if start in visited:
+        return
+    visited.add(start)
+    paths.append(start)
+    for neighbor in g[start]:
+        dfs(g, neighbor, visited, paths)
 
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
-        n = len(accounts)
-        parents = [i for i in range(n)]
-        ranks = [0 for _ in range(n)]
-        mail2accidx = {}
-        for i in range(n):
-            for j in range(1, len(accounts[i])):
-                mail = accounts[i][j]
-                if mail not in mail2accidx:
-                    mail2accidx[mail] = i
-                else:
-                    union(i, mail2accidx[mail], parents, ranks)
-        d = {}
-        for key, value in mail2accidx.items():
-            d.setdefault(find(value, parents), []).append(key)
+        g = collections.defaultdict(list)
+        for each_acc in accounts:
+            email_0 = each_acc[1]
+            for each_email in each_acc[2:]:
+                g[email_0].append(each_email)
+                g[each_email].append(email_0)
+        visited = set()
         res = []
-        for key, value in d.items():
-            name = accounts[key][0]
-            res.append([name] + sorted(value))
+        for each_acc in accounts:
+            name = each_acc[0]
+            mails = []
+            dfs(g, each_acc[1], visited, mails)
+            if mails:
+                res.append([name]+sorted(mails))
         return res
-
-
-
-
-
 
 # leetcode submit region end(Prohibit modification and deletion)
 accounts = [["Fern","Fern8@m.co","Fern9@m.co"],
