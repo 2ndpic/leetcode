@@ -103,7 +103,6 @@ def kruskal(g, n):
     return res
 
 def lazy_prim(points):
-    from queue import PriorityQueue
     cal_dis = lambda p1, p2: abs(p1[0]-p2[0]) + abs(p1[1]-p2[1])
 
     pq = PriorityQueue()
@@ -119,12 +118,56 @@ def lazy_prim(points):
         res += dis
         for i in visit:
             pq.put((cal_dis(points[cur], points[i]), i))
+    return res
 
+from queue import PriorityQueue
+import math
+def slove(points):
+    if len(points) == 1:
+        return 0
+    last = points[0]
+    remain_points = {(x, y):math.inf for x, y in points[1:]}
+    cal_dis = lambda p1, p2: abs(p1[0]-p2[0]) + abs(p1[1]-p2[1])
+    res = 0
+    while remain_points:
+        min_weight = math.inf
+        next_p = None
+        for p, weight in remain_points.items():
+            dis = cal_dis(last, p)
+            if weight > dis:
+                weight = dis
+                remain_points[p] = dis
+            if weight < min_weight:
+                next_p = p
+                min_weight = weight
+        last = next_p
+        res += min_weight
+        del remain_points[last]
     return res
 
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
-        return lazy_prim(points)
+        if len(points) == 1:
+            return 0
+        last = points[0]
+        remain_points = {(x, y): float('inf') for x, y in points[1:]}
+        res = 0
+
+        while remain_points:
+            min_weight = float('inf')
+            next_p = None
+            for p, weight in remain_points.items():
+                dis = abs(p[0]-last[0]) + abs(p[1]-last[1])
+                if weight > dis:
+                    weight = dis
+                    remain_points[p] = weight
+                if weight < min_weight:
+                    min_weight = weight
+                    next_p = p
+            last = next_p
+            res += min_weight
+            del remain_points[last]
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
 
-print(Solution().minCostConnectPoints(points = [[0,0],[1,1],[1,0],[-1,1]]))
+print(Solution().minCostConnectPoints(points = [[11,-6],[9,-19],[16,-13],[4,-9],[20,4],[20,7],[-9,18],[10,-15],[-15,3],[6,6]]))
