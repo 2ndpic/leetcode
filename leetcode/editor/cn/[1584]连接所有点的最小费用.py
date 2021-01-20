@@ -93,8 +93,7 @@ def kruskal(g, n):
     for u, v, weight in g:
         if n_edge == n-1:
             break
-        if find(u, parents) != find(v, parents):
-            union(u, v, parents, ranks)
+        if union(u, v, parents, ranks):
             res += weight
             n_edge += 1
 
