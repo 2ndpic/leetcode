@@ -70,29 +70,35 @@ def kruskal(g, n, edge=None):
     ranks = [0 for _ in range(n)]
     cost = 0
     n_edges = 0
+    w = float('inf')
     if edge:
         union(edge[0], edge[1], parents, ranks)
         cost += edge[2]
         n_edges += 1
+        w = edge[2]
     for u, v, weight in g:
         if n_edges == n-1:
             break
         if union(u, v, parents, ranks):
             cost += weight
             n_edges += 1
-    return cost if n_edges == n-1 else float('inf')
+            w = weight
+
+    return cost if n_edges == n-1 else float('inf'), w
 class Solution:
     def findCriticalAndPseudoCriticalEdges(self, n: int, edges: List[List[int]]) -> List[List[int]]:
         arg = sorted(range(len(edges)), key=lambda x: edges[x][2])
         g = [edges[x] for x in arg]
 
-        cost = kruskal(g, n)
+        cost, w = kruskal(g, n)
         res = [[], []]
         for i in range(len(g)):
+            if g[i][2] > w:
+                break
             g_temp = g[:i] + g[i+1:]
-            if kruskal(g_temp, n) > cost:          # 判断关键边
+            if kruskal(g_temp, n)[0] > cost:          # 判断关键边
                 res[0].append(arg[i])
-            elif kruskal(g_temp, n, g[i]) == cost: # 判断伪关键边
+            elif kruskal(g_temp, n, g[i])[0] == cost: # 判断伪关键边
                 res[1].append(arg[i])
         return res
 
