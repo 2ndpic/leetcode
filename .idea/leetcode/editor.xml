@@ -35,6 +35,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1128]等价多米诺骨牌对的数量.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1128]等价多米诺骨牌对的数量.py" />
+              <option name="questionId" value="1227" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1202]交换字符串中的元素.py">
           <value>
             <LeetcodeEditor>
@@ -240,6 +248,22 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[947]移除最多的同行或同列石头.py" />
               <option name="questionId" value="984" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[959]由斜杠划分区域.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[959]由斜杠划分区域.py" />
+              <option name="questionId" value="999" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[989]数组形式的整数加法.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[989]数组形式的整数加法.py" />
+              <option name="questionId" value="1031" />
             </LeetcodeEditor>
           </value>
         </entry>
