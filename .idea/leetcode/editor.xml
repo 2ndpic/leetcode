@@ -123,6 +123,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[162]寻找峰值.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[162]寻找峰值.py" />
+              <option name="questionId" value="162" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[171]Excel表列序号.py">
           <value>
             <LeetcodeEditor>
@@ -152,6 +160,14 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[210]课程表 II.py" />
               <option name="questionId" value="210" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[278]第一个错误的版本.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[278]第一个错误的版本.py" />
+              <option name="questionId" value="278" />
             </LeetcodeEditor>
           </value>
         </entry>
