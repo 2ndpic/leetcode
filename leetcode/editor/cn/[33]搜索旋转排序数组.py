@@ -56,7 +56,11 @@ class Solution:
                 t = i
                 break
         res = bin_search(nums, target, 0, t)
-        if res == 0 and res[0] != target: res = bin_search(nums, target, t, len(nums))
-        if (res == t and res[t] != target) or res == len(nums):
+        if res == 0 and nums[0] != target: res = bin_search(nums, target, t, len(nums))
+        if (res == t and nums[t] != target) or res == len(nums) or nums[res] != target:
             return -1
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
+nums = [1, 3]
+target = 2
+print(Solution().search(nums, target))
