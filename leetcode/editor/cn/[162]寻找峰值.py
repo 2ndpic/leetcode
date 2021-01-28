@@ -37,18 +37,16 @@
 #  进阶：你可以实现时间复杂度为 O(logN) 的解决方案吗？ 
 #  Related Topics 数组 二分查找 
 #  👍 356 👎 0
-
 from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
-        lo, hi = 0, len(nums)
+        lo, hi = 0, len(nums)-1
         while lo < hi:
             mid = (lo + hi) // 2
-            if (mid>hi):
-                lo = mid + 1
-            else:
-                hi = mid
+            if nums[mid] < nums[mid+1]: lo = mid + 1
+            else: hi = mid
         return lo
-
 # leetcode submit region end(Prohibit modification and deletion)
+nums = [1,2,1]
+print(Solution().findPeakElement(nums))
