@@ -99,6 +99,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[153]寻找旋转排序数组中的最小值.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[153]寻找旋转排序数组中的最小值.py" />
+              <option name="questionId" value="153" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1552]两球之间的磁力.py">
           <value>
             <LeetcodeEditor>
@@ -128,6 +136,14 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[162]寻找峰值.py" />
               <option name="questionId" value="162" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1631]最小体力消耗路径.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1631]最小体力消耗路径.py" />
+              <option name="questionId" value="1753" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -195,6 +211,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[34]在排序数组中查找元素的第一个和最后一个位置.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[34]在排序数组中查找元素的第一个和最后一个位置.py" />
+              <option name="questionId" value="34" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[374]猜数字大小.py">
           <value>
             <LeetcodeEditor>
@@ -248,6 +272,14 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[649]Dota2 参议院.py" />
               <option name="questionId" value="649" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[658]找到 K 个最接近的元素.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[658]找到 K 个最接近的元素.py" />
+              <option name="questionId" value="658" />
             </LeetcodeEditor>
           </value>
         </entry>

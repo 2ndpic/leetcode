@@ -50,17 +50,18 @@ def bin_search(a, x, lo, hi):
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        t = 0
-        for i in range(1, len(nums)):
-            if nums[i] < nums[i-1]:
-                t = i
-                break
+        lo, hi = 0, len(nums)
+        while lo < hi:
+            mid = (lo+hi) // 2
+            if nums[mid] > nums[-1]: lo = mid + 1
+            else: hi = mid
+        t = lo
         res = bin_search(nums, target, 0, t)
         if res == 0 and nums[0] != target: res = bin_search(nums, target, t, len(nums))
         if (res == t and nums[t] != target) or res == len(nums) or nums[res] != target:
             return -1
         return res
 # leetcode submit region end(Prohibit modification and deletion)
-nums = [1, 3]
-target = 2
+nums = [1,2,3,4,0]
+target = 0
 print(Solution().search(nums, target))
