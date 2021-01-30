@@ -53,28 +53,59 @@ from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
 from collections import deque
 def bfs(t, grid):
-    q, visited = deque([(0, 0)]), {(0, 0)}
+    q = deque([(0, 0)]) if grid[0][0] <= t else deque()
+    visited = {(0, 0)} if grid[0][0] <= t else set()
     while q:
         x, y = q.popleft()
         for nx, ny in [(x - 1, y), (x, y + 1), (x + 1, y), (x, y - 1)]:
-            if 0 <= nx < len(grid) and 0 <= ny < len(grid[0]) and (nx, ny) not in visited and grid[nx][ny] >= t:
+            if (0 <= nx < len(grid) and 0 <= ny < len(grid[0])) and (nx, ny) not in visited and t >= grid[nx][ny]:
                 q.append((nx, ny))
                 visited.add((nx, ny))
 
     return (len(grid) - 1, len(grid[0]) - 1) in visited
-
-
+def s1(grid: List[List[int]]) -> int:
+    lo, hi = 0, 2500
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if not bfs(mid, grid):
+            lo = mid + 1
+        else:
+            hi = mid
+    return lo
+def find(u, parents):
+    if u != parents[u]:
+        parents[u] = find(parents[u], parents)
+    return parents[u]
+def union(u, v, parents, ranks):
+    pu, pv = find(u, parents), find(v, parents)
+    if pu == pv: return False
+    if ranks[pu] > ranks[pv]:
+        parents[pv] = pu
+    elif ranks[pv] > ranks[pu]:
+        parents[pu] = pv
+    else:
+        parents[pv] = pu
+        ranks[pu] += 1
+    return True
 class Solution:
     def swimInWater(self, grid: List[List[int]]) -> int:
-        lo, hi = 0, 2500
-        while lo < hi:
-            mid = (lo + hi) // 2
-            if not bfs(mid, grid):
-                lo = mid + 1
-            else:
-                hi = mid
-        return lo
+        n = len(grid)
+        edges = []
+        for i in range(n):
+            for j in range(n):
+                if i + 1 < n:
+                    edges.append((i*n+j, i*n+j+n, max(grid[i][j], grid[i+1][j])))
+                if j + 1 < n:
+                    edges.append((i*n+j, i*n+j+1, max(grid[i][j],  grid[i][j+1])))
+        edges.sort(key=lambda x: x[2])
+        parents, ranks = [i for i in range(n*n)], [0 for _ in range(n*n)]
+        for u, v, d in edges:
+            union(u, v, parents, ranks)
+            if find(0, parents) == find(n*n-1, parents):
+                return d
+
+
 
 # leetcode submit region end(Prohibit modification and deletion)
-grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]
+grid = [[0,2],[1,3]]
 print(Solution().swimInWater(grid))
