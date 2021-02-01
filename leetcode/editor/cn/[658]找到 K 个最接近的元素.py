@@ -37,26 +37,23 @@
 
 from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
-def bisect_left(a, x):
-    lo, hi = 0, len(a)
-    while lo < hi:
-        mid = (lo + hi) // 2
-        if a[mid] < x: lo = mid + 1
-        else: hi = mid
-    return lo
-
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
-        lo, hi = 0, len(arr) - 1
-        while hi - lo + 1 > k:
-            if abs(arr[lo] - x) <= abs(arr[hi] - x):
-                hi -= 1
+        left = 0
+        right = len(arr) - k
+
+        while left < right:
+            mid = (left + right) // 2
+            if x - arr[mid] > arr[mid + k] - x:
+                left = mid + 1
             else:
-                lo += 1
-        return arr[lo:lo + k]
+                right = mid
+        return arr[left:left + k]
+
 
 # leetcode submit region end(Prohibit modification and deletion)
-arr = [1,2,3,4,5]
-k = 2
+arr = [1,1,2,2,2,2,2,3,3]
+k = 3
 x = 3
 print(Solution().findClosestElements(arr, k, x))
+# print(bisect_left(arr, 7))
