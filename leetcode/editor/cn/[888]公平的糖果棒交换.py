@@ -53,16 +53,24 @@
 
 from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
+def s1(A: List[int], B: List[int]) -> List[int]:
+    a_sum = sum(A)
+    b_sum = sum(B)
+    average = (a_sum + b_sum) // 2
+    b = set(B)
+    for a_i in A:
+        b_i = average - (a_sum - a_i)
+        if b_i in b:
+            return [a_i, b_i]
 class Solution:
     def fairCandySwap(self, A: List[int], B: List[int]) -> List[int]:
         a_sum = sum(A)
         b_sum = sum(B)
-        average = (a_sum + b_sum) // 2
-        b = set(B)
-        for i in A:
-            diff = abs(average - (a_sum - i))
-            if diff in b and a_sum - i + diff == b_sum - diff + i:
-                return [i, diff]
+        delta = (a_sum - b_sum) // 2
+        a = set(A)
+        for b_i in B:
+            if delta + b_i in a:
+                return [delta + b_i, b_i]
         
 # leetcode submit region end(Prohibit modification and deletion)
 A = [1,2,5]

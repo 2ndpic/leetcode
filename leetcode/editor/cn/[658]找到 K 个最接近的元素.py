@@ -47,16 +47,13 @@ def bisect_left(a, x):
 
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
-        lo, hi = 0, 10000 # 搜索以t为基点的半径到达多少时能包含k个数
-        while lo < hi:
-            mid = (lo + hi) // 2
-            l = bisect_left(arr, x - mid)
-            if l+k-1 < len(arr) and arr[l+k-1] > x : hi = mid
-            else: lo = mid + 1
-        l = bisect_left(arr, x-lo)
-        if l-1 >=0 and abs(arr[l-1] - x) <= abs(arr[l+k-1] - x):
-            l -= 1
-        return arr[l:l+k]
+        lo, hi = 0, len(arr) - 1
+        while hi - lo + 1 > k:
+            if abs(arr[lo] - x) <= abs(arr[hi] - x):
+                hi -= 1
+            else:
+                lo += 1
+        return arr[lo:lo + k]
 
 # leetcode submit region end(Prohibit modification and deletion)
 arr = [1,2,3,4,5]
