@@ -41,7 +41,24 @@
 
 from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
+import bisect
 class Solution:
     def medianSlidingWindow(self, nums: List[int], k: int) -> List[float]:
-        pass
+        get_mid = lambda x: (x[len(x)//2] + x[(len(x)-1)//2]) / 2
+        i, j = 0, k
+        window = sorted(nums[:k])    # O(klog(k))
+        res = [get_mid(window)]
+        while j < len(nums):
+            window.pop(bisect.bisect_left(window, nums[i])) #O(k)
+            window.insert(bisect.bisect_left(window, nums[j]), nums[j]) #O(k)
+            res.append(get_mid(window))
+            i += 1
+            j += 1
+        return res
+
+
+
 # leetcode submit region end(Prohibit modification and deletion)
+nums = [1,3,-1,-3,5,3,6,7]
+k = 3
+print(Solution().medianSlidingWindow(nums, k))
