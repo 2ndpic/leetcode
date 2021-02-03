@@ -1,4 +1,4 @@
-# 假设按照升序排序的数组在预先未知的某个点上进行了旋转。 
+# 假设按照升序排序的数组在预先未知的某个点上进行了旋转。
 # 
 #  ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。 
 # 
@@ -30,15 +30,17 @@ from typing import List
 class Solution:
     def findMin(self, nums: List[int]) -> int:
         lo, hi = 0, len(nums) - 1
-        while lo < hi:
-            mid = (lo + hi) // 2
+        while lo <= hi:
+            mid = (lo + hi)// 2
             if nums[mid] < nums[hi]:
                 hi = mid
             elif nums[mid] > nums[hi]:
                 lo = mid + 1
-            else:
+            elif nums[mid] == nums[hi]:
                 hi -= 1
         return nums[lo]
+
+
 # leetcode submit region end(Prohibit modification and deletion)
-nums = [3,1]
+nums = [4,5,1,2,3,4]
 print(Solution().findMin(nums))
