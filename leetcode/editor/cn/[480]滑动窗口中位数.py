@@ -193,7 +193,7 @@ class Solution:
             if balance == 2:
                 big.push(small.pop())
             # 较大数字堆挪一个给较小数字堆(3,3)->(2,4)->(3,3)或者(4,3)->(3,4)->(4,3)
-            if balance == -2:
+            elif balance == -2:
                 small.push(big.pop())
             # 重新达到平衡了,该看看堆顶是不是待删除元素了
             while not small.empty() and mp[small.top()]:
