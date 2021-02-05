@@ -57,9 +57,33 @@
 #  👍 1076 👎 0
 
 from typing import List
+
+class S1:
+    def findDuplicate(self, nums: List[int]) -> int:
+        s = set()
+        for i in nums:
+            if i in s: return i
+            s.add(i)
+def check(mid, arr):
+    cnt = 0
+    for i in arr:
+        if i <= mid: cnt += 1
+    return cnt > mid
+
+class S2:
+    def findDuplicate(self, nums: List[int]) -> int:
+        lo, hi = 0, len(nums)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if check(mid, nums): hi = mid
+            else: lo = mid + 1
+        return lo # 题目保证一定存在重复元素，所以不用检查lo的合法性
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-
+        # TODO 快慢指针解法
+        pass
 
 # leetcode submit region end(Prohibit modification and deletion)
+nums = [5,3,5,2,1]
+print(Solution().findDuplicate(nums))
