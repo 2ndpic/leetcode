@@ -33,16 +33,18 @@ from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def checkPossibility(self, nums: List[int]) -> bool:
-        # 滑动窗口，大小为3
-        nums = [min(nums)] + nums
-        if len(nums) <= 3:
-            return True
-        l, r = 0, 1
-        flag = 0
-        while r < len(nums):
-            if nums[r] < nums[l]:
-                nums[r] = nums[l]
-                flag += 1
+        # 滑动窗口，大小为2
+        flag = False
+        for i in range(len(nums) - 1):
+            if nums[i] > nums[i+1]:
+                if flag:
+                    return False
+                if i == 0 or nums[i+1] >= nums[i-1]:
+                    nums[i] = nums[i+1]
+                else:
+                    nums[i+1] = nums[i]
+                flag = True
+        return True
 
 
 
