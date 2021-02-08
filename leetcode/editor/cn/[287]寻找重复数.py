@@ -64,6 +64,7 @@ class S1:
         for i in nums:
             if i in s: return i
             s.add(i)
+
 def check(mid, arr):
     cnt = 0
     for i in arr:
