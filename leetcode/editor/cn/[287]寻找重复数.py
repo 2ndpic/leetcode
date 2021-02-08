@@ -82,9 +82,18 @@ class S2:
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        # TODO 快慢指针解法
-        pass
+        slow, fast = nums[0], nums[nums[0]]
+        while slow != fast:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+
+        slow = 0
+        while slow != fast:
+            slow = nums[slow]
+            fast = nums[fast]
+        return slow
+
 
 # leetcode submit region end(Prohibit modification and deletion)
-nums = [5,3,5,2,1]
+nums = [4,3,4,2,1]
 print(Solution().findDuplicate(nums))
