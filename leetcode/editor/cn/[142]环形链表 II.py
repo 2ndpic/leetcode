@@ -54,8 +54,10 @@
 #  
 #  Related Topics 链表 双指针 
 #  👍 847 👎 0
-
-
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 # leetcode submit region begin(Prohibit modification and deletion)
 # Definition for singly-linked list.
 # class ListNode:
@@ -65,5 +67,20 @@
 
 class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
+        dummy = ListNode(None)
+        dummy.next = head
+        slow, fast = dummy, dummy
+        while True:
+            if fast is None or fast.next is None: return None
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast: break
+        slow = dummy
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
         
 # leetcode submit region end(Prohibit modification and deletion)
+head = ListNode(1)
+print(Solution().detectCycle(head))
