@@ -1,0 +1,6 @@
+# 注释忽略doc文件夹中所有的文件
+leetcode/editor/cn/doc/
+
+*.json
+*.xml
+/.idea
