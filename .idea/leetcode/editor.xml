@@ -43,6 +43,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[119]杨辉三角 II.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[119]杨辉三角 II.py" />
+              <option name="questionId" value="119" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1202]交换字符串中的元素.py">
           <value>
             <LeetcodeEditor>
@@ -88,6 +96,14 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1347]制造字母异位词的最小步骤数.py" />
               <option name="questionId" value="1469" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1423]可获得的最大点数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1423]可获得的最大点数.py" />
+              <option name="questionId" value="1538" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -267,6 +283,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[485]最大连续1的个数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[485]最大连续1的个数.py" />
+              <option name="questionId" value="485" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[50]Pow(x, n).py">
           <value>
             <LeetcodeEditor>
@@ -339,6 +363,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[703]数据流中的第 K 大元素.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[703]数据流中的第 K 大元素.py" />
+              <option name="questionId" value="789" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[704]二分查找.py">
           <value>
             <LeetcodeEditor>
@@ -368,6 +400,14 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[744]寻找比目标字母大的最小字母.py" />
               <option name="questionId" value="745" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[765]情侣牵手.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[765]情侣牵手.py" />
+              <option name="questionId" value="770" />
             </LeetcodeEditor>
           </value>
         </entry>
