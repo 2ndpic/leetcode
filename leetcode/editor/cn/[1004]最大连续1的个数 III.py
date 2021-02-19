@@ -75,6 +75,15 @@ class Solution:
                 else: hi = mid
             ans = max(ans, i - lo)
         return ans
+class Solution:
+    def longestOnes(self, A: List[int], K: int) -> int:
+        p, ans = [0], 0
+        for i in A:
+            p.append(p[-1] + (i ^ 1))
+        for i in range(len(p)):
+            ans = max(ans, i - bisect.bisect_left(p, p[i] - K))
+            # p[8]=5代表A前8个元素0的个数为5,k=2, 找到p中>=3的下界，p[5] = 3,则找到p[5]即5这个位置。10010 10010001 p = [0,0,1,2,2,3,4,5,5]
+        return ans
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def longestOnes(self, A: List[int], K: int) -> int:
@@ -83,12 +92,13 @@ class Solution:
             p.append(p[-1] + (i ^ 1))
         for i in range(len(p)):
             ans = max(ans, i - bisect.bisect_left(p, p[i] - K))
-            # p[8]=5代表A前8个元素0的个数为5,k=2, 找到p中>=3的下界，若p[5] = 3,则找到p[5]即5这个位置。10010 10010001 p = [0,0,1,2,2,3,4,5,5]
+            # p[8]=5代表A前8个元素0的个数为5,k=2, 找到p中>=3的下界，p[5] = 3,则找到p[5]即5这个位置。10010 10010001 p = [0,0,1,2,2,3,4,5,5]
         return ans
-
 # leetcode submit region end(Prohibit modification and deletion)
 A = [1,1,1,0,0,0,1,1,1,1,1]
 K = 3
 A = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1]
 K = 3
+A = [1,0,0,1,0,0,0,1]
+K = 2
 print(Solution().longestOnes(A, K))
