@@ -55,20 +55,16 @@ from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        """
-        若总个数n为奇数，则寻找第(n//2+1)个数
-        若总个数n为偶数，则寻找第(n//2)个数和第(n//2+1)个数
-        """
         n = len(nums1) + len(nums2)
-        lo, hi = 0, max(len(nums1), len(nums2))
+        lo, hi = -1, max(len(nums1), len(nums2))
         while lo < hi:
             c1 = (lo + hi) // 2
             c2 = (n + 1) // 2 - c1 - 2
-            if -1 < c2 < len(nums2) and c1 + 1 < len(nums1) and nums2[c2] > nums1[c1 + 1]:
+            if c2 >= len(nums2) or (-1 < c2 < len(nums2) and c1 + 1 < len(nums1) and nums2[c2] > nums1[c1 + 1]):
                 lo = c1 + 1
             else:
                 hi = c1
-        c1 = lo if lo < len(nums1) else -1
+        c1 = lo
         c2 = (n + 1) // 2 - c1 - 2
 
         if -1 < c1 < len(nums1) and -1 < c2 < len(nums2): l = max(nums1[c1], nums2[c2])
@@ -83,7 +79,33 @@ class Solution:
 # leetcode submit region end(Prohibit modification and deletion)
 # nums1 = [2, 3, 5, 10]
 # nums2 = [1, 4, 7, 9]
-nums1 = [3]
-nums2 = [-2, -1]
+nums1 = []
+nums2 = [2, 3]
 print(Solution().findMedianSortedArrays(nums1, nums2))
 print(sorted(nums1+nums2))
+# print("-----------")
+nums1 = [1, 3]
+nums2 = [2]
+print(Solution().findMedianSortedArrays(nums1, nums2))
+print(sorted(nums1+nums2))
+# print("-----------")
+nums1 = [1, 2]
+nums2 = [3, 4]
+print(Solution().findMedianSortedArrays(nums1, nums2))
+print(sorted(nums1+nums2))
+# print("-----------")
+nums1 = [0, 0]
+nums2 = [0, 0]
+print(Solution().findMedianSortedArrays(nums1, nums2))
+print(sorted(nums1+nums2))
+# print("-----------")
+nums1 = []
+nums2 = [2]
+print(Solution().findMedianSortedArrays(nums1, nums2))
+print(sorted(nums1+nums2))
+# print("-----------")
+nums1 = [1,2]
+nums2 = [2,3,3]
+print(Solution().findMedianSortedArrays(nums1, nums2))
+print(sorted(nums1+nums2))
+# print("-----------")
