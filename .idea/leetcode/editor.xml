@@ -467,6 +467,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[697]数组的度.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[697]数组的度.py" />
+              <option name="questionId" value="697" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[69]x 的平方根.py">
           <value>
             <LeetcodeEditor>
@@ -488,6 +496,14 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[704]二分查找.py" />
               <option name="questionId" value="792" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[719]找出第 k 小的距离对.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[719]找出第 k 小的距离对.py" />
+              <option name="questionId" value="719" />
             </LeetcodeEditor>
           </value>
         </entry>
