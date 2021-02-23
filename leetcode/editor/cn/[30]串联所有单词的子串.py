@@ -27,29 +27,38 @@
 
 from typing import List
 import collections
-# leetcode submit region begin(Prohibit modification and deletion)
-def check(l, r, s, words):
-    memo = collections.Counter(words)
-    j = 0
-    for i in range(l, r + 1):
-
-
-
-
-
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
-        ans = []
-        l, r = 0, 0
-        while r < len(s):
-            while not check(l, r, s, words):
-                l += 1
-            ans.append(l)
-            r += 1
+        n, m, k, ans = len(s), sum(len(i) for i in words), len(words[0]), []
+        memo = collections.Counter(words)
+        for i in range(n - m + 1):
+            tmp = []
+            for j in range(i, i + m, k):
+                tmp.append(s[j:j + k])
+            if collections.Counter(tmp) == memo:
+                ans.append(i)
+        return ans
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def findSubstring(self, s: str, words: List[str]) -> List[int]:
+        n, m, k, ans = len(s), sum(len(i) for i in words), len(words[0]), []
+        memo = collections.Counter(words)
+        idx2word = collections.defaultdict(int)
+        for i in range(n - k + 1):
+            idx2word[i] = s[i:i+k]
+        for i in range(n - m + 1):
+            tmp = []
+            for j in range(i, i + m, k):
+                tmp.append(idx2word[j])
+            if collections.Counter(tmp) == memo:
+                ans.append(i)
         return ans
 
 
-
-
-
 # leetcode submit region end(Prohibit modification and deletion)
+s = "barfoothefoobarman"
+words = ["foo", "bar"]
+
+s = "wordgoodgoodgoodbestword"
+words = ["word","good","best","word"]
+print(Solution().findSubstring(s, words))
