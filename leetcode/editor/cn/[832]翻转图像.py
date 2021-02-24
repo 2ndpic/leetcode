@@ -34,10 +34,27 @@
 #  
 #  Related Topics 数组 
 #  👍 236 👎 0
-
+class Solution:
+    def flipAndInvertImage(self, A: List[List[int]]) -> List[List[int]]:
+        n, m = len(A), len(A[0])
+        for i in range(n):
+            for j in range((m+1)//2):
+                if A[i][j] == A[i][m-1-j]:
+                    A[i][j] = A[i][m-1-j] = A[i][j] ^ 1
+        return A
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def flipAndInvertImage(self, A: List[List[int]]) -> List[List[int]]:
+        n, m = len(A), len(A[0])
+        for i in range(n):
+            l, r = 0, m - 1
+            while l <= r:
+                if l == r: A[i][l] = 1 - A[i][l]
+                else: A[i][l], A[i][r] = (1 - A[i][r]), (1 - A[i][l])
+                l += 1
+                r -= 1
+        return A
+
         
 # leetcode submit region end(Prohibit modification and deletion)
