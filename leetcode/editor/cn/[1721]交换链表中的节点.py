@@ -58,27 +58,21 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
     def swapNodes(self, head: ListNode, k: int) -> ListNode:
-        class Solution:
-            def swapNodes(self, head: ListNode, k: int) -> ListNode:
-                # 找到正向第k-1节点，反向k+1节点
-                dummy = ListNode()
-                dummy.next = head
-                before, after = dummy, dummy
-                for i in range(k - 1):
-                    before = before.next
-                tmp = dummy
-                for i in range(k + 1):
-                    tmp = tmp.next
-                while tmp:
-                    after = after.next
-                    tmp = tmp.next
-                p1, p2 = before.next, after.next
-                p1_after, p2_after = p1.next, p2.next
-                before.next = p2
-                p2.next = p1_after
-                after.next = p1
-                p1.next = p2_after
-                return head
+        p1, p2 = head, head
+        for i in range(k - 1):
+            p1 = p1.next
+        cur = p1.next
+        while cur:
+            cur = cur.next
+            p2 = p2.next
+        p1.val, p2.val = p2.val, p1.val
+        return head
+
 # leetcode submit region end(Prohibit modification and deletion)
