@@ -33,9 +33,6 @@
 #  
 #  Related Topics 数组 
 #  👍 155 👎 0
-
-
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
         ans = []
@@ -44,5 +41,15 @@ class Solution:
             for j in range(len(matrix)):
                 tmp.append(matrix[j][i])
             ans.append(tmp)
+        return ans
+
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        n, m = len(matrix), len(matrix[0])
+        ans = [[0] * n for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                ans[i][j] = matrix[j][i]
         return ans
 # leetcode submit region end(Prohibit modification and deletion)
