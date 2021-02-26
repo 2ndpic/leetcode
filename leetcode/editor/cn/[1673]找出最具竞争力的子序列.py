@@ -39,24 +39,8 @@ import heapq
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def mostCompetitive(self, nums: List[int], k: int) -> List[int]:
-        tmp, min_num, = [], float('inf')
-        for index, value in enumerate(nums):
-            heapq.heappush(tmp, (value, index))
-            if index + k <= len(nums) and value < min_num:
-                min_num = value
-                min_idx = index
-        ans = []
-        print(min_num, min_idx)
-        while tmp[0][0] != min_num:
-            v, idx = heapq.heappop(tmp)
-            if idx > min_idx:
-                ans.append((v, idx))
-        for i in range(k-len(ans)):
-            while tmp[0][1] < min_idx:
-                heapq.heappop(tmp)
-            ans.append(heapq.heappop(tmp))
-            min_idx = ans[-1][1]
-        return [i[0] for i in sorted(ans, key=lambda x:x[1])]
+        stack = []
+
 # leetcode submit region end(Prohibit modification and deletion)
 nums = [71,18,52,29,55,73,24,42,66,8,80,2]
 k = 3
