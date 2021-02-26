@@ -40,9 +40,9 @@ class Solution:
         n = len(num)
         stack = []
         for i in range(n):
-            if not stack:
-                stack.append(num[i])
-                continue
+            # if not stack:
+            #     stack.append(num[i])
+            #     continue
             while stack and num[i] < stack[-1] and (k + len(stack) > i):
                 stack.pop()
             if len(stack) < n - k:
