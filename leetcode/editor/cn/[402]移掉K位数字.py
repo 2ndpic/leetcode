@@ -32,17 +32,11 @@
 #  
 #  Related Topics 栈 贪心算法 
 #  👍 516 👎 0
-
-
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
         n = len(num)
         stack = []
         for i in range(n):
-            # if not stack:
-            #     stack.append(num[i])
-            #     continue
             while stack and num[i] < stack[-1] and (k + len(stack) > i):
                 stack.pop()
             if len(stack) < n - k:
@@ -51,7 +45,20 @@ class Solution:
             if stack[i] != "0":
                 return "".join(stack[i:])
         return "0"
+
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def removeKdigits(self, num: str, k: int) -> str:
+        n = len(num)
+        stack = []
+        remain = n - k
+        for i in range(n):
+            while k and stack and num[i] < stack[-1]:
+                k -= 1
+                stack.pop()
+            stack.append(num[i])
+        return "".join(stack[:remain]).lstrip("0") or "0"
 # leetcode submit region end(Prohibit modification and deletion)
 num = "10200"
-k = 4
+k = 1
 print(Solution().removeKdigits(num, k))
