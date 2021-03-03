@@ -31,10 +31,21 @@ class Solution:
         后面的奇数一定比前面的偶数多个1，因为偶数最低位肯定是0
         偶数一定跟比他自己小一倍的偶数的1的个数一样多，因为*2就是二进制右移后面添个0
         """
-        
-        ret = [0 for _ in range(num+1)]
-        for i in range(1, num+1):
+
+        ret = [0 for _ in range(num + 1)]
+        for i in range(1, num + 1):
             ret[i] = ret[i >> 1] + (i & 1)
         return ret
-        
+
+class Solution:
+    def countBits(self, num: int) -> List[int]:
+        def getcnt(n):
+            cnt = 0
+            for i in range(32):
+                cnt += (n >> i) & 1
+            return cnt
+        ans = [0] * (num + 1)
+        for i in range(1, num + 1):
+            ans[i] = getcnt(i)
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
