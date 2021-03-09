@@ -60,17 +60,40 @@ class Solution:
         return len(low)
 
 # leetcode submit region begin(Prohibit modification and deletion)
-def
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         """
-        如果用dp数组，dp[i] = max(dp[:i] + 1, dp[i])
+        如果用dp数组，dp[i] = max(dp[j] + 1, dp[i]) 0<=j<i, nums[j] < nums[i]
         每次都要去找到[0,..,i-1]区间的最大值，时间复杂度O(n^2)
         但是可以用数据结构优化，因为涉及到区间的更新和统计
         为了高效，我们可以利用树状数组，时间复杂度O(nlogn)
         """
-        n = len(nums)
-        dp = [0] * (n + 1)
+        def update(i, value):
+            i += 1
+            while i <= len(nums):
+                T[i] = max(T[i], value)
+                i += i & (-i)
+
+        def query(i):
+            i += 1
+            ans = 0
+            while i:
+                ans = max(ans, T[i])
+                i -= i & (-i)
+            return ans
+        z = [(i, v) for i, v in enumerate(nums)]
+        z.sort(key=lambda x: (x[1], x[0]))
+        n = len(z)
+        T = [0] * (n + 1)
+        ans = 0
+        for i in range(n):
+            maxx = query(z[i][1]) + 1 # 查询编号小于等于nums[i]的LIS最大长度
+            update(z[i][1], maxx)     # 把长度+1，再去更新前面的LIS长度
+            ans = max(ans, maxx)
+        return ans
+
+
+
 
 
 # leetcode submit region end(Prohibit modification and deletion)

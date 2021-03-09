@@ -45,5 +45,5 @@ class Solution:
         helper(0, [])
         return res
 # leetcode submit region end(Prohibit modification and deletion)
-s = "aabb"
+s = "aabbaa"
 print(Solution().partition(s))
