@@ -46,8 +46,6 @@
 #  Related Topics 二分查找 动态规划 
 #  👍 1429 👎 0
 from typing import List
-
-
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         low = []
