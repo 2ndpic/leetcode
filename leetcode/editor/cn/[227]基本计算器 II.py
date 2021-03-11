@@ -47,22 +47,25 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def calculate(self, s: str) -> int:
-        s = "".join(s.split(" "))
-        stack = [i for i in s[::-1]]
-        ans = 0
-        print(stack)
-        while stack:
+        stack = []
+        pre_op = "+"
+        num = 0
+        for idx, c in enumerate(s):
+            if c.isdigit():
+                num = num * 10 + int(c)
+            if idx == len(s) - 1 or c in "+-*/":
+                if pre_op == "+":
+                    stack.append(num)
+                elif pre_op == "-":
+                    stack.append(-num)
+                elif pre_op == "*":
+                    stack.append(stack.pop() * num)
+                elif pre_op == "/":
+                    stack.append(int(stack.pop() / num))
+                num = 0
+                pre_op = c
+        return sum(stack)
 
-        # l, r, mi = None, None, 0
-        # while stack: #['3', '+', '5', '/', '2', '3']
-        #     c = stack.pop()
-        #     if c not in "+-*/":
-        #         if l is None:
-        #             r +=
-        #     else:
-        #         tmp = 0
-        #         mi = 0
-        return
 # leetcode submit region end(Prohibit modification and deletion)
-s = " 3+5 - 23 / 6"
+s = " 5*5 / 25 * 6 + 1"
 print(Solution().calculate(s))
