@@ -17,15 +17,21 @@ class Solution:
             ans[0] += 1
             if start == n:
                 return
-            for i in range(1, 10):
+            for i in range(10):
                 if i not in num:
-                    num.append(i)
+                    num.add(i)
                     backtracking(start + 1, num)
                     num.remove(i)
 
 
         ans = [0]
-        backtracking(0, [])
+        num = set()
+        for i in range(10):
+            num.add(i)
+            num.add(0)
+            backtracking(1, num)
+            num.remove(i)
+            print(i, ans[0])
         return ans[0]
 # leetcode submit region end(Prohibit modification and deletion)
-print(Solution().countNumbersWithUniqueDigits(2)) # 3 -> 739
+print(Solution().countNumbersWithUniqueDigits(3)) # 3 -> 739
