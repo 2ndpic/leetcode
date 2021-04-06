@@ -23,19 +23,69 @@
 # 你如何处理一个溢出的过大的整数输入? 
 #  Related Topics 回溯算法 
 #  👍 153 👎 0
+class Solution:
+    def isAdditiveNumber(self, num: str) -> bool:
+        def backtracking(start, a1, a2, a3):
+            if a1 > -1 and a2 > -1 and a3 > -1 and a3 != a1 + a2:
+                return
+            if start == len(num):
+                if a1 > -1 and a2 > -1 and a3 > -1:
+                    ans[0] += 1
+                return
+            for i in range(start, len(num)):
+                cur = int(num[start: i + 1])
+                if a1 == -1:
+                    backtracking(i + 1, cur, a2, a3)
+                elif a2 == - 1:
+                    backtracking(i + 1, a1, cur, a3)
+                elif a3 == -1:
+                    backtracking(i + 1, a1, a2, cur)
+                else:
+                    if cur > a2 + a3:
+                        break
+                    backtracking(i + 1, a2, a3, cur)
+                if cur == 0:
+                    break
 
+        ans = [0]
+        backtracking(0, -1, -1, -1)
+        return ans[0] > 0
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isAdditiveNumber(self, num: str) -> bool:
-        def backtracking(start, left_sum):
+        def backtracking(start, a1, a2, a3):
+            if a1 > -1 and a2 > -1 and a3 > -1 and a3 != a1 + a2:
+                return
             if start == len(num):
-                return True
+                if a1 > -1 and a2 > -1 and a3 > -1:
+                    ans[0] += 1
+                return
             for i in range(start, len(num)):
-                right = int(num[start:i + 1])
-                if left_sum != right:
+                cur = int(num[start: i + 1])
+                if a1 == -1:
+                    backtracking(i + 1, cur, a2, a3)
+                elif a2 == - 1:
+                    backtracking(i + 1, a1, cur, a3)
+                elif a3 == -1:
+                    backtracking(i + 1, a1, a2, cur)
+                else:
+                    if cur > a2 + a3:
+                        break
+                    backtracking(i + 1, a2, a3, cur)
+                if cur == 0:
                     break
-                backtracking(i, )
 
+        ans = [0]
+        backtracking(0, -1, -1, -1)
+        return ans[0] > 0
 
 # leetcode submit region end(Prohibit modification and deletion)
+# num = "112358"
+# num = "199100199"
+# num = "113"
+# num = "101"
+num = "0"
+# num = "1023"
+# num = "199111992"
+print(Solution().isAdditiveNumber(num))
