@@ -28,6 +28,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isAdditiveNumber(self, num: str) -> bool:
-        def backtracking():
+        def backtracking(start, left_sum):
+            if start == len(num):
+                return True
+            for i in range(start, len(num)):
+                right = int(num[start:i + 1])
+                if left_sum != right:
+                    break
+                backtracking(i, )
+
 
 # leetcode submit region end(Prohibit modification and deletion)
