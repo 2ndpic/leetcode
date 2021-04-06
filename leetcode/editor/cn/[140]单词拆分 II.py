@@ -49,4 +49,5 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        pass
 # leetcode submit region end(Prohibit modification and deletion)
