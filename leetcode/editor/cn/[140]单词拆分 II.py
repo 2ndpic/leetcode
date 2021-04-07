@@ -45,9 +45,28 @@
 #  Related Topics 动态规划 回溯算法 
 #  👍 438 👎 0
 
-
+from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
-        pass
+        def backtracking(start, path):
+            if start == len(s):
+                ans.append(" ".join(path))
+                return
+            for i in range(start, len(s)):
+                w = s[start:i + 1]
+                if w in wordDict:
+                    backtracking(i + 1, path + [w])
+        wordDict = set(wordDict)
+        ans = []
+        backtracking(0, [])
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
+s = "catsandog"
+wordDict = ["cats", "dog", "sand", "and", "cat"]
+# s = "pineapplepenapple"
+# wordDict = ["apple", "pen", "applepen", "pine", "pineapple"]
+# s = "catsanddog"
+# wordDict = ["cat", "cats", "and", "sand", "dog"]
+print(Solution().wordBreak(s, wordDict))
