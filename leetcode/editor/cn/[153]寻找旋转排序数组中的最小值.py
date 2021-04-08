@@ -50,5 +50,5 @@ class Solution:
         return nums[lo]
 
 # leetcode submit region end(Prohibit modification and deletion)
-nums = [4,5,1,2,3]
+nums = [4,5,0,1,2,3]
 print(Solution().findMin(nums))
