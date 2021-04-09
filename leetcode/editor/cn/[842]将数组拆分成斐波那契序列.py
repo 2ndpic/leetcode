@@ -62,6 +62,29 @@ from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def splitIntoFibonacci(self, S: str) -> List[int]:
+        def backtracking(start, path):
+            if start == len(S) and len(path) > 2:
+                ans.append(path)
+                return True
+            for i in range(start, len(S)):
+                num = int(S[start: i + 1])
+                if num > N: break
+                if len(path) < 2 or path[-1] + path[-2] == num:
+                    if backtracking(i + 1, path + [num]):
+                        return True
+                elif path[-1] + path[-2] < num: break
+                if num == 0: break
+            return False
 
-        
+        ans = []
+        N = 2 ** 31 - 1
+        backtracking(0, [])
+        return ans[0] if ans else []
+
 # leetcode submit region end(Prohibit modification and deletion)
+S = "123456579"
+# S = "11235813"
+S = "112358130"
+S = "0123"
+S = "539834657215398346785398346991079669377161950407626991734534318677529701785098211336528511"
+print(Solution().splitIntoFibonacci(S))
