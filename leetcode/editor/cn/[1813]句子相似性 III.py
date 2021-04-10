@@ -52,16 +52,22 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
-    def areSentencesSimilar(self, sentence1: str, sentence2: str) -> bool:
-        s1, s2 = sentence1.split(), sentence2.split()
-        if len(s1) < len(s2): s1, s2 = s2, s1
-        l, r, cur = 0, len(s1) - 1, 0
-        while cur < len(s2):
-            if s2[cur] == s1[l]:
-                l += 1
-            elif s2[cur] == s1[r]:
-                r -= 1
+    def areSentencesSimilar(self, sentence1, sentence2):
+        # 判断base与compare,base为总长句子，compare为待插入的句子
+        base, comp = sentence1.split(), sentence2.split()
+        if len(base) < len(comp):
+            base, comp = comp, base
+        # 先判断左匹配，再判断右匹配
+        i, j = 0, 0
+        while i < len(comp) and base[i] == comp[i]:
+            i += 1
+        while j < len(comp) - i and base[len(base) - 1 - j] == comp[len(comp) - 1 - j]:
+            j += 1
+        return i + j == len(comp)
 
 
 
 # leetcode submit region end(Prohibit modification and deletion)
+s1 = "a a b c a"
+s2 = "a a d c a"
+print(Solution().areSentencesSimilar(s1, s2))
