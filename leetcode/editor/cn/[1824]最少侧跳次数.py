@@ -81,45 +81,24 @@ class Solution:
         """
         贪心
         """
-        n, ans, cur_path = len(obstacles), 0, 2
-        for i in range(1, n):
-            if obstacles[i] == cur_path:
+        n, ans, cur_path, i = len(obstacles), 0, 2, 0
+        while i < n - 1:
+            if obstacles[i + 1] != cur_path:
+                i += 1
+                continue
+            other, another = (cur_path - 1 + 1) % 3 + 1, (cur_path - 1 + 2) % 3 + 1  # 另外两条跑道
+            tmp1, tmp2 = i, i   # 记录侧跳另外两条跑道遇到的第一个障碍位置
+            while tmp1 < n and obstacles[tmp1] != other: tmp1 += 1
+            while tmp2 < n and obstacles[tmp2] != another: tmp2 += 1
+            cur_path, i = (other, tmp1 - 1) if tmp1 > tmp2 else (another, tmp2 - 1)
+            ans += 1
+        return ans
+
 
 
 
 # leetcode submit region end(Prohibit modification and deletion)
-obstacles = [0,1,1,3,3,0]
-obstacles = [0,1,2,3,0]
+# obstacles = [0,1,1,3,3,0]
+# obstacles = [0,1,2,3,0]
 obstacles = [0,2,1,0,3,0]
 print(Solution().minSideJumps(obstacles))
-"""
-class Solution:
-    def minSideJumps(self, obstacles):
-        length = len(obstacles)
-        ret = 0
-        num = 2
-        choices = {1, 2, 3}
-        for i in range(length - 1):
-            if obstacles[i + 1] == num:
-                _choice = choices - {num, obstacles[i]}
-                if len(_choice) == 1:
-                    num = _choice.pop()
-                    ret += 1
-                else:
-                    tmp = {}
-                    for j in _choice:
-                        n = i
-                        while n < length and obstacles[n] != j:
-                            n += 1
-                        tmp[n] = j
-                    num = tmp[max(tmp)]
-                    ret += 1
-        return ret
-        
-        
-青蛙初始入赛道数记为num，然后for循环一直前行
-当判断i + 1 等于num时，我们需要考虑两点
-如果位置是否有障碍(因为走到了当前所有障碍肯定不是num)，然后只有三条赛道，所以此时求差集后直接次数加一继续即可
-4 如果当前位置无障碍，这需要贪心思维，获取除num以外的两个赛道，谁能下一次走的更远，选择最远的跳过去
-重复2,3,4，完成解题...
-"""
