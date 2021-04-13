@@ -33,8 +33,40 @@
 #  
 #  Related Topics 树 深度优先搜索 递归 
 #  👍 131 👎 0
+class Solution:
+    def minDiffInBST(self, root: TreeNode) -> int:
+        """
+        中序遍历就是有序的序列
+        """
+        def mid_order(node):
+            if not node: return
+            mid_order(node.left)
+            arr.append(node.val)
+            mid_order(node.right)
+        arr = []
+        mid_order(root)
+        diff = arr[1] - arr[0]
+        for i in range(2, len(arr)):
+            diff = min(diff, arr[i] - arr[i - 1])
+        return diff
+class Solution:
+    def minDiffInBST(self, root: TreeNode) -> int:
+        """
+        递归版
+        """
+        def dfs(node):
+            nonlocal prev, ans
+            if not node: return
+            dfs(node.left)
+            if prev:
+                ans = min(ans, abs(prev.val - node.val))
+            prev = node
+            dfs(node.right)
 
-
+        ans = 10 ** 5
+        prev = None
+        dfs(root)
+        return ans
 # leetcode submit region begin(Prohibit modification and deletion)
 # Definition for a binary tree node.
 # class TreeNode:
@@ -44,4 +76,19 @@
 #         self.right = right
 class Solution:
     def minDiffInBST(self, root: TreeNode) -> int:
+        """
+        迭代版
+        """
+        ans = 10 ** 5
+        prev = None
+        stack = []
+        while root or len(stack):
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if prev: ans = min(ans, abs(prev.val - root.val))
+            prev = root
+            root = root.right
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
