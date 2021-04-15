@@ -40,11 +40,41 @@
 #  👍 594 👎 0
 
 from typing import List
+
+
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def rob(self, nums: List[int]) -> int:
-
-
+        """
+        动态规划
+        dp[i]表示偷到第i家(并且偷第i家)，取得的最大金额
+        dp[i] = max(dp[1], dp[2], ..., dp[i - 2]) + nums[i]
+        偷最后一家的话就不能偷第一家,从第二家开始偷，偷第一家的话就不能偷最后一家
+        """
+        n = len(nums)
+        if n == 1: return nums[0]
+        dp = [0] * (n + 1)
+        # 偷第一家
+        for i in range(1, n):
+            dp[i] = nums[i - 1]
+            tmp = 0
+            for j in range(1, i - 1):
+                tmp = max(tmp, dp[j])
+            dp[i] += tmp
+        ans = max(dp)
+        dp = [0] * (n + 1)
+        # 偷最后一家
+        for i in range(2, n + 1):
+            dp[i] = nums[i - 1]
+            tmp = 0
+            for j in range(2, i - 1):
+                tmp = max(tmp, dp[j])
+            dp[i] += tmp
+        ans = max(ans, max(dp))
+        return ans
 
 
 # leetcode submit region end(Prohibit modification and deletion)
+nums = [94, 40, 49, 65, 21, 21, 106, 80, 92, 81, 679, 4, 61, 6, 237, 12, 72, 74, 29, 95, 265, 35, 47, 1, 61, 397, 52, 72, 37, 51, 1, 81, 45, 435, 7, 36, 57, 86, 81, 72]
+
+print(Solution().rob(nums))
