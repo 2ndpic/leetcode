@@ -40,9 +40,6 @@
 #  👍 594 👎 0
 
 from typing import List
-
-
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def rob(self, nums: List[int]) -> int:
         """
@@ -73,8 +70,41 @@ class Solution:
         ans = max(ans, max(dp))
         return ans
 
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        """
+        动态规划
+        f[i][0]表示考虑前i个房子，且不偷第i间房子的最大收益
+        f[i][1]表示考虑前i个房子，且偷第i间房子的最大收益
+        因为第一间和最后一间是连在一起的，所以偷第一间和不偷第一间分开考虑
+        不偷第一间，偷最后一间
+        f[i][0] = max(f[i-1][0], f[i-1][1])
+        f[i][1] = f[i-1][0] + nums[i - 1]   其中 2<=i<=n-1
+        处理最后一间,最大价值为：max(f[n - 1][0] + nums[n - 1], f[n - 1][1])
+
+        偷第一间,就不能偷最后一间:
+        f[i][0] = max(f[i-1][0], f[i-1][1])
+        f[i][1] = f[i-1][0] + nums[i - 1]   其中 1<=i<n
+        f[n][0] = max(f[n-1][0], f[n-1][1])
+        最大价值为max(f[n - 1][0], f[n - 1][1])
+        """
+        f, n = [[0, 0], [0, 0]], len(nums)
+        # 第一间房子必然不选
+        for i in range(2, n):
+            f[i % 2][0] = max(f[(i - 1) % 2])
+            f[i % 2][1] = f[(i - 1) % 2][0] + nums[i - 1]
+        ans = max(f[(n - 1) % 2][0] + nums[n - 1], f[(n - 1) % 2][1]) # 处理最后一间
+        # 第一间房子允许选
+        f = [[0, 0], [0, 0]]
+        for i in range(1, n):
+            f[i % 2][0] = max(f[(i - 1) % 2])
+            f[i % 2][1] = f[(i - 1) % 2][0] + nums[i - 1]
+        ans = max(ans, f[(n - 1) % 2][0], f[(n - 1) % 2][1])
+        return ans
+
 
 # leetcode submit region end(Prohibit modification and deletion)
 nums = [94, 40, 49, 65, 21, 21, 106, 80, 92, 81, 679, 4, 61, 6, 237, 12, 72, 74, 29, 95, 265, 35, 47, 1, 61, 397, 52, 72, 37, 51, 1, 81, 45, 435, 7, 36, 57, 86, 81, 72]
-
+# nums = [5]
 print(Solution().rob(nums))

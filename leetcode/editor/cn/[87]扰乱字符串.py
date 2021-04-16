@@ -73,10 +73,7 @@ import collections
 import functools
 class Solution:
     def isScramble(self, s1: str, s2: str) -> bool:
-        """
-        超时
-        """
-        @functools.lru_cache()
+        @functools.lru_cache(None)
         def dfs(ss1, ss2):
             if ss1 == ss2:
                 return True
