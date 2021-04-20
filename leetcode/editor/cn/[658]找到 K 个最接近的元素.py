@@ -39,21 +39,24 @@ from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
-        left = 0
-        right = len(arr) - k
+        lo = 0
+        hi = len(arr) - k
 
-        while left < right:
-            mid = (left + right) // 2
+        while lo < hi:
+            mid = (lo + hi) // 2
             if x - arr[mid] > arr[mid + k] - x:
-                left = mid + 1
+                lo = mid + 1
             else:
-                right = mid
-        return arr[left:left + k]
+                hi = mid
+        return arr[lo:lo + k]
 
 
 # leetcode submit region end(Prohibit modification and deletion)
 arr = [1,1,2,2,2,2,2,3,3]
 k = 3
 x = 3
-print(Solution().findClosestElements(arr, k, x))
+arr = [1, 2 ,3 ,4, 5]
+k = 4
+x = 3
+print(Solution().findClosestElements(arr, k, x)) # [2, 3, 3]
 # print(bisect_left(arr, 7))
