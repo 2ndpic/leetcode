@@ -43,10 +43,29 @@
 #  1 <= n <= 104 
 #  
 #  Related Topics 数学 二分查找 动态规划 
-#  👍 613 👎 0
+#  👍 614 👎 0
 
-
+import functools
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def superEggDrop(self, k: int, n: int) -> int:
+        """
+        超时
+        """
+        @functools.lru_cache(None)
+        def f(K, N):
+            if K == 1: return N
+            if N == 0: return 0
+            ans = float("inf")
+            for i in range(1, N + 1):
+                ans = min(ans, max(f(K - 1, i - 1), f(K, N - i)) + 1)
+            return ans
+        return f(k, n)
 # leetcode submit region end(Prohibit modification and deletion)
+k = 1
+n = 2
+k = 2
+n = 6
+k = 3
+n = 14
+print(Solution().superEggDrop(k, n))
