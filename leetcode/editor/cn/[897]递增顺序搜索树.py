@@ -26,27 +26,27 @@
 #  
 #  Related Topics 树 深度优先搜索 递归 
 #  👍 175 👎 0
-class Solution:
-    def increasingBST(self, root: TreeNode) -> TreeNode:
-        def mid_order(node):
-            if not node: return node
-            mid_order(node.left)
-            ans.append(node)
-            mid_order(node.right)
-        ans = []
-        mid_order(root)
-        ans.append(None)
-        for i in range(len(ans) - 1):
-            ans[i].right = ans[i + 1]
-            ans[i].left = None
-        return ans[0]
+# class Solution:
+#     def increasingBST(self, root: TreeNode) -> TreeNode:
+#         def mid_order(node):
+#             if not node: return node
+#             mid_order(node.left)
+#             ans.append(node)
+#             mid_order(node.right)
+#         ans = []
+#         mid_order(root)
+#         ans.append(None)
+#         for i in range(len(ans) - 1):
+#             ans[i].right = ans[i + 1]
+#             ans[i].left = None
+#         return ans[0]
 # leetcode submit region begin(Prohibit modification and deletion)
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
     def increasingBST(self, root: TreeNode) -> TreeNode:
         stack = []
@@ -62,8 +62,11 @@ class Solution:
         cur = dummy
         for node in l:
             cur.right = node
-            cur.left = None
+            node.left = None
             cur = node
         return dummy.right
 
 # leetcode submit region end(Prohibit modification and deletion)
+root = TreeNode(2, TreeNode(1), TreeNode(4))
+root.right.left = TreeNode(3)
+root = Solution().increasingBST(root)
