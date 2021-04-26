@@ -55,8 +55,52 @@
 #  Related Topics 数组 二分查找 
 #  👍 226 👎 0
 
-
-# leetcode submit region begin(Prohibit modification and deletion)
+from typing import List
 class Solution:
     def shipWithinDays(self, weights: List[int], D: int) -> int:
+        def check(t):
+            prev, cnt = 0, 0
+            for i in range(len(pre_sum)):
+                if pre_sum[i] - prev > t:
+                    prev = pre_sum[i - 1]
+                    cnt += 1
+            return cnt
+
+        pre_sum = [0]
+        for i in weights:
+            pre_sum.append(pre_sum[-1] + i)
+        pre_sum.append(float('inf'))
+        lo, hi = max(weights), pre_sum[-2]
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if check(mid) > D:
+                lo = mid + 1
+            else:
+                hi = mid
+        return lo
+
+# leetcode submit region begin(Prohibit modification and deletion)
+def check(weights, mid):
+    cnt, cur = 0, 0
+    for i in weights:
+        if i + cur > mid:
+            cnt += 1
+            cur = i
+        else:
+            cur += i
+    return cnt + 1
+
+class Solution:
+    def shipWithinDays(self, weights: List[int], D: int) -> int:
+        lo, hi = max(weights), sum(weights)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if check(weights, mid) > D: lo = mid + 1
+            else: hi = mid
+        return lo
+
 # leetcode submit region end(Prohibit modification and deletion)
+weights = [1,2,3,4,5,6,7,8,9,10];D = 2
+# weights = [3,2,2,4,1,4];D = 3
+# weights = [1,2,3,1,1];D = 1
+print(Solution().shipWithinDays(weights, D))
