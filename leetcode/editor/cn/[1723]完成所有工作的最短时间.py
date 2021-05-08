@@ -38,9 +38,12 @@
 
 from typing import List
 import functools
-# leetcode submit region begin(Prohibit modification and deletion)
+
 class Solution:
     def minimumTimeRequired(self, jobs: List[int], k: int) -> int:
+        """
+        超时
+        """
         def backtracking(start, t, p, cost, cur):
             if cur == total:
                 return p >= 1
@@ -66,13 +69,34 @@ class Solution:
             if backtracking(0, mid, k, 0, 0): hi = mid
             else: lo = mid + 1
         return lo
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def minimumTimeRequired(self, jobs: List[int], k: int) -> int:
+        def backtracking(job_index, used_worker, worker_time, max_time):
+            nonlocal ans
+            if max_time >= ans: return
+            if job_index == len(jobs):
+                ans = max_time
+                return
+            if used_worker < k:
+                worker_time[used_worker] = jobs[job_index]
+                backtracking(job_index + 1, used_worker + 1, worker_time, max(max_time, worker_time[used_worker]))
+                worker_time[used_worker] = 0
+            for i in range(used_worker):
+                worker_time[i] += jobs[job_index]
+                backtracking(job_index + 1, used_worker, worker_time, max(max_time, worker_time[i]))
+                worker_time[i] -= jobs[job_index]
+
+        ans = float('inf')
+        backtracking(0, 0, [0] * k, 0)
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
 # jobs = [3,2,3];k = 3
 # jobs = [1,3,5,1000];k = 4
 # jobs = [1,2,4,7,8];k = 2
-# jobs = [12,13,14,17,25];k = 3 # 29
+jobs = [12,13,14,17,25];k = 3 # 29
 # jobs = [2978102,9140986,71464,3828079,8045322,9482671,4668155,5705056,2444210,7052934,1110498];k = 2 # 27276775
 # jobs = [5,10,9,15,20,12,18,8,13,15];k = 5
-jobs = [6518448,8819833,7991995,7454298,2087579,380625,4031400,2905811,4901241,8480231,7750692,3544254];k=4
+# jobs = [6518448,8819833,7991995,7454298,2087579,380625,4031400,2905811,4901241,8480231,7750692,3544254];k=4
 
 print(Solution().minimumTimeRequired(jobs, k))
