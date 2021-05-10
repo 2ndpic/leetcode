@@ -61,7 +61,19 @@
 #  Related Topics 树 深度优先搜索 
 #  👍 114 👎 0
 
-
+class Solution:
+    def leafSimilar(self, root1: TreeNode, root2: TreeNode) -> bool:
+        def dfs(root, path):
+            if not root: return
+            if root.left is None and root.right is None: path.append(root.val)
+            if root.left:
+                dfs(root.left, path)
+            if root.right:
+                dfs(root.right, path)
+        p1, p2 = [], []
+        dfs(root1, p1)
+        dfs(root2, p2)
+        return p1 == p2
 # leetcode submit region begin(Prohibit modification and deletion)
 # Definition for a binary tree node.
 # class TreeNode:
@@ -71,5 +83,18 @@
 #         self.right = right
 class Solution:
     def leafSimilar(self, root1: TreeNode, root2: TreeNode) -> bool:
+        def dfs(root):
+            path = []
+            stack = [root]
+            while stack:
+                node = stack.pop()
+                if node.right: stack.append(node.right)
+                if node.left: stack.append(node.left)
+                if node.left is None and node.right is None:
+                    path.append(node.val)
+            return path
+
+        return dfs(root1) == dfs(root2)
+
         
 # leetcode submit region end(Prohibit modification and deletion)
