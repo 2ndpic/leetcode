@@ -58,7 +58,6 @@
 #  👍 10 👎 0
 
 from typing import List
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxDistance(self, nums1: List[int], nums2: List[int]) -> int:
         stack = [i for i in nums1[:len(nums2)]]
@@ -68,10 +67,47 @@ class Solution:
                 stack.pop()
                 ans = max(ans, i - len(stack))
         return ans
+class Solution:
+    def maxDistance(self, nums1: List[int], nums2: List[int]) -> int:
+        ans = 0
+        for i in range(len(nums1)):
+            lo, hi = i, len(nums2)
+            while lo < hi:
+                mid = (lo + hi) // 2
+                if nums2[mid] < nums1[i]: hi = mid
+                else: lo = mid + 1
+            ans = max(ans, lo - i - 1)
+        return ans
+class Solution:
+    def maxDistance(self, nums1: List[int], nums2: List[int]) -> int:
+        """
+        双指针
+        """
+        l, r, ans = 0, 0, 0
+        while r < len(nums2):
+            while l < len(nums1) and nums1[l] > nums2[r]:
+                l += 1
+            if l < len(nums1):
+                ans = max(ans, r - l)
+            r += 1
+        return ans
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def maxDistance(self, nums1: List[int], nums2: List[int]) -> int:
+        """
+        双指针
+        """
+        l, r = 0, 0
+        while l < len(nums1) and r < len(nums2):
+            if nums1[l] > nums2[r]:
+                l += 1
+            r += 1
+        return max(0, r - l - 1)
 
 # leetcode submit region end(Prohibit modification and deletion)
-nums1 = [55,30,5,4,2];nums2 = [100,20,10,10,5]
-# nums1 = [2,2,2]; nums2 = [10,10,1]
-# nums1 = [30,29,19,5];nums2 = [25,25,25,25,25]
-# nums1 = [5,4];nums2 = [3,2]
+# nums1 = [55,30,5,4,2];nums2 = [100,20,10,10,5]
+nums1 = [2,2,2]; nums2 = [10,10,1]
+nums1 = [30,29,19,5];nums2 = [25,25,25,25,25]
+nums1 = [5,4];nums2 = [3,2]
+# nums1 = [5,4,3];nums2 = [7, 6, 5, 4]
 print(Solution().maxDistance(nums1, nums2))
