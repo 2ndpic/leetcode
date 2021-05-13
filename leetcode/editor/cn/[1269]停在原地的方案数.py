@@ -56,8 +56,8 @@ class Solution:
             if index < 0 or index >= arrLen: return 0
             if rest_steps == 0:
                 return int(index == 0)
-            return (f(index + 1, rest_steps -1) + f(index - 1, rest_steps - 1) + f(index, rest_steps - 1)) % N
-        N = 10 ** 9 + 7
+            return (f(index + 1, rest_steps - 1) + f(index - 1, rest_steps - 1) + f(index, rest_steps - 1)) % mod
+        mod = 10 ** 9 + 7
         return f(0, steps)
 
 class Solution:
@@ -79,35 +79,50 @@ class Solution:
         for i in range(steps - 1, -1, -1):
             for j in range(0, max_index + 1):
                 f[i][j] += f[i + 1][j]
-                f[i][j] += f[i + 1][j - 1] if j - 1>= 0 else 0
+                f[i][j] += f[i + 1][j - 1] if j - 1 >= 0 else 0
                 f[i][j] += f[i + 1][j + 1] if j + 1 <= max_index else 0
                 f[i][j] %= mod
         return f[0][0]
 
-
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numWays(self, steps: int, arrLen: int) -> int:
         """
-        f[i][j]表示剩余操作数为i，所在位置为j的回到0的所有方案数
-        初始化:
-            起始位置为0，操作次数为step，即有初始条件f[step][0]=1,f[0][0]则是最终答案
-        f[i][j]可以由下面三种状态转移过来：
-        - 原地不动，消耗一次操作，此时由f[i+1][j]转移而来
-        - 右走一步，消耗一次操作，此时由f[i+1][j-1]转移来
-        - 左走一步，消耗一次操作，此时由f[i+1][j+1]转移来
-
-        因为最终要回到下标0位置，最远只能到达位置为step/2(再远就回不来了)。所以可以确定index位置
+        优化
+        f[i]只依赖于f[i+1]的状态
+        而且随着可操作次数的减少，可到达的最远位置下标也在缩小。从f[0][0]倒推的话
+        会发现，可达到的最远位置等于可操作次数
+        所以可以从两者取最小值，能够有效减少无效状态的计算。
         """
         max_index, mod = min(steps // 2, arrLen - 1), 10 ** 9 + 7
         f = [[0] * (max_index + 1) for _ in range(steps + 1)]
         f[steps][0] = 1
         for i in range(steps - 1, -1, -1):
-            for j in range(0, max_index + 1):
+            edge = min(i, max_index)
+            for j in range(0, edge + 1):
                 f[i][j] += f[i + 1][j]
                 f[i][j] += f[i + 1][j - 1] if j - 1>= 0 else 0
                 f[i][j] += f[i + 1][j + 1] if j + 1 <= max_index else 0
                 f[i][j] %= mod
+        return f[0][0]
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def numWays(self, steps: int, arrLen: int) -> int:
+        """
+        优化
+        滚动数组优化
+        """
+        max_index, mod = min(steps // 2, arrLen - 1), 10 ** 9 + 7
+        f = [[0] * (max_index + 1) for _ in range(2)]
+        f[steps & 1][0] = 1
+        for i in range(steps - 1, -1, -1):
+            edge = min(i, max_index)
+            a, b = i & 1, (i + 1) & 1
+            for j in range(0, edge + 1):
+                f[a][j] = 0
+                f[a][j] += f[b][j]
+                f[a][j] += f[b][j - 1] if j - 1 >= 0 else 0
+                f[a][j] += f[b][j + 1] if j + 1 <= max_index else 0
+                f[a][j] %= mod
         return f[0][0]
 
 
