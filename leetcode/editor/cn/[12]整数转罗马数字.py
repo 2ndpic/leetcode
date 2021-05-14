@@ -68,9 +68,64 @@
 #  
 #  Related Topics 数学 字符串 
 #  👍 569 👎 0
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        roman = {1: 'I',5: 'V',10: 'X',50: 'L',100: 'C',500: 'D',1000: 'M',
+             4: 'IV', 9: 'IX', 40: 'XL', 90: 'XC', 400: 'CD', 900: 'CM'}
+        ans = ""
+        cur = 1000
+        while num:
+            d = num // cur
+            if d >= 5:
+                if d == 9:
+                    ans += roman[9 * cur]
+                    num -= 9 * cur
+                    cur //= 10
+                else:
+                    ans += roman[cur * 5]
+                    num -= cur * 5
+            elif d > 0:
+                if d == 4:
+                    ans += roman[cur * 4]
+                    num -= 4 * cur
+                    cur //= 10
+                else:
+                    ans += roman[cur] * d
+                    num -= cur * d
+                    cur //= 10
+            else:
+                cur //= 10
 
+        return ans
+
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        roman = {1: 'I',5: 'V',10: 'X',50: 'L',100: 'C',500: 'D',1000: 'M',
+             4: 'IV', 9: 'IX', 40: 'XL', 90: 'XC', 400: 'CD', 900: 'CM'}
+        ans = ""
+        cur = 1000
+        while num:
+            d = num // cur
+            if d == 9 or d == 4:
+                ans += roman[cur * d]
+            elif d > 0:
+                ans += (roman[cur * 5] if d // 5 else "") + roman[cur] * (d % 5)
+            num -= cur * d
+            cur //= 10
+
+        return ans
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def intToRoman(self, num: int) -> str:
+        list1 = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+        list2 = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+        ans = ""
+        for n, r in zip(list1, list2):
+            if num >= n:
+                ans = ans + r * (num // n)
+                num = num - (num // n) * n
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
+num = 58
+print(Solution().intToRoman(num))
