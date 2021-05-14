@@ -104,7 +104,7 @@ class Solution:
                 f[i][j] += f[i + 1][j + 1] if j + 1 <= max_index else 0
                 f[i][j] %= mod
         return f[0][0]
-# leetcode submit region begin(Prohibit modification and deletion)
+
 class Solution:
     def numWays(self, steps: int, arrLen: int) -> int:
         """
@@ -125,10 +125,32 @@ class Solution:
                 f[a][j] %= mod
         return f[0][0]
 
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def numWays(self, steps: int, arrLen: int) -> int:
+        """
+        优化
+        另外一种状态定义
+        f[i][j]表示消耗i次操作，到达位置j的方案数.f[0][0] = 1, f[0][j] = 0
+        f[i][j] = f[i-1][j] + f[i-1][j-1] + f[i-1][j+1]
+        """
+        max_index, mod = min(steps // 2, arrLen - 1), 10 ** 9 + 7
+        f = [[0] * (max_index + 1) for _ in range(2)]
+        f[0][0] = 1
+        for i in range(1, steps + 1):
+            a, b = i & 1, (i - 1) & 1
+            for j in range(0, min(i, max_index) + 1):
+                f[a][j] = f[b][j]
+                f[a][j] += f[b][j - 1] if j - 1 >= 0 else 0
+                f[a][j] += f[b][j + 1] if j + 1 <= max_index else 0
+                f[a][j] %= mod
+
+        return f[steps & 1][0]
+
 
 
         
 # leetcode submit region end(Prohibit modification and deletion)
-# steps = 1;arrLen = 2 # 4
+steps = 3;arrLen = 2 # 4
 steps = 4;arrLen = 2 # 8
 print(Solution().numWays(steps, arrLen))
