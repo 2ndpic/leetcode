@@ -42,7 +42,23 @@
 #  
 #  Related Topics 动态规划 
 #  👍 22 👎 0
-
+class Solution:
+    def rearrangeSticks(self, n: int, k: int) -> int:
+        """
+        f[i][j]表示用长度递增的i根棍子看到j根的方案数
+        初始化：f[0][0] = 1, f[0][i] = 0 if i != 0
+        - 能看到最后一根，则最后一根必为长度为i的棍子, f[i-1][j-1]
+        - 不能看到最后一根，最后一根为[1,..,i-1]的任一可能，若为x，则前i-1根棍子排列为[1,...,x-1,x+1,..i],则方案数为f[i-1][j]
+        f[i][j] = f[i-1][j-1] + (i - 1) * f[i-1][j]
+        """
+        mod = 10 ** 9 + 7
+        f = [1] + [0] * k
+        for i in range(1, n + 1):
+            g = [0] * (k + 1)
+            for j in range(1, k + 1):
+                g[j] = (f[j-1] + (i - 1) * f[j]) % mod
+            f = g
+        return f[k]
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
@@ -55,19 +71,14 @@ class Solution:
         f[i][j] = f[i-1][j-1] + (i - 1) * f[i-1][j]
         """
         mod = 10 ** 9 + 7
-        # f = [[0] * (k + 1) for _ in range(2)]
-        # f[0][0] = 1
-        # for i in range(1, n + 1):
-        #     for j in range(1, k + 1):
-        #         f[i & 1][j] = ((i - 1) * f[(i - 1) & 1][j] + f[(i - 1) & 1][j - 1]) % mod
-        # return f[n & 1][k]
-        f = [1] + [0] * k
+        f = [[0] * (k + 1) for _ in range(2)]
+        f[0][0] = 1
         for i in range(1, n + 1):
-            g = [0] * (k + 1)
+            f[i & 1][0] = 0
             for j in range(1, k + 1):
-                g[j] = (f[j-1] + (i - 1) * f[j]) % mod
-            f = g
-        return f[k]
+                f[i & 1][j] = ((i - 1) * f[(i - 1) & 1][j] + f[(i - 1) & 1][j - 1]) % mod
+
+        return f[n & 1][k]
 
 
 # leetcode submit region end(Prohibit modification and deletion)
