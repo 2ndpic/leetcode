@@ -57,8 +57,33 @@
 #  Related Topics 贪心算法 二分查找 
 #  👍 24 👎 0
 
-
+from typing import List
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxBuilding(self, n: int, restrictions: List[List[int]]) -> int:
+        if not restrictions: return n - 1
+        restrictions.sort(key = lambda x: x[0])
+        if restrictions[0][0] != 1: restrictions = [[1, 0]] + restrictions
+        if restrictions[-1][0] != n: restrictions.append([n, n-1])
+        m = len(restrictions)
+        # 从左往右，限制下一个受限房子的高度
+        for idx in range(m - 1):
+            (i, hi), (j, hj) = restrictions[idx], restrictions[idx + 1]
+            hj = min(hj, hi + (j - i))
+            restrictions[idx + 1][1] = hj
+        # 从右往左，限制上一个受限房子的高度
+        for idx in range(m - 1, 0, -1):
+            (i, hi), (j, hj) = restrictions[idx], restrictions[idx - 1]
+            hj = min(hj, hi + (i - j))
+            restrictions[idx -1][1] = hj
+        ans = 0
+        for idx in range(m - 1):
+            (i, limit_i), (j, limit_j) = restrictions[idx], restrictions[idx + 1]
+            ans = max(ans, ((j - i) + limit_i + limit_j) // 2) # 过相邻受限房子的斜率为1，-1直线的交点为最大高度
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
+n = 5;restrictions = [[2,1],[4,1]] #2
+n = 6;restrictions = []  #5
+# n = 10;restrictions = [[5,3],[2,5],[7,4],[10,3]]
+print(Solution().maxBuilding(n, restrictions)) # 2
