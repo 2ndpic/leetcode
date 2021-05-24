@@ -30,9 +30,11 @@
 #  Related Topics 数学 
 #  👍 66 👎 0
 
-
+import functools
+from operator import xor
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def xorGame(self, nums: List[int]) -> bool:
+        return len(nums) % 2 == 0 or functools.reduce(xor, nums) == 0
         
 # leetcode submit region end(Prohibit modification and deletion)
