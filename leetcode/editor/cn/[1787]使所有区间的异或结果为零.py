@@ -45,7 +45,7 @@ from typing import List
 class Solution:
     def minChanges(self, nums: List[int], k: int) -> int:
         n, max_num = len(nums), 1024
-        f = [[3000] * max_num for _ in range(k)] # f[i][xor]为前i列异或值为xor的最小修改次数
+        f = [[3000] * max_num for _ in range(k)] # f[i][xor]为前i列且首行异或值为xor的最小修改次数
         g = [3000] * k # g[i]表示考虑前i列的最小修改次数
         for i in range(k):
             num_map, cnt = {}, 0
