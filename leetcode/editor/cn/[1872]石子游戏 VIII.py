@@ -59,9 +59,28 @@
 #  -104 <= stones[i] <= 104 
 #  
 #  Related Topics 动态规划 
-#  👍 16 👎 0
-from itertools import accumulate
+#  👍 14 👎 0
+
 from typing import List
+from itertools import accumulate
+class Solution:
+    def stoneGameVIII(self, stones: List[int]) -> int:
+        """
+        递归思路，超时
+        """
+        def f(arr, alice_score, bob_socre, step):
+            if len(arr) <= 1:
+                return alice_score - bob_socre
+            ans = float('-inf') if step % 2 else float('inf')
+            for x in range(2, len(arr) + 1):
+                score = sum(arr[:x])
+                array = [score] + arr[x:]
+                if step % 2: # Alice的回合
+                    ans = max(ans, f(array, alice_score + score, bob_socre, step + 1))
+                else:
+                    ans = min(ans, f(array, alice_score, bob_socre + score, step + 1))
+            return ans
+        return f(stones, 0, 0, 1)
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def stoneGameVIII(self, stones: List[int]) -> int:
@@ -72,6 +91,9 @@ class Solution:
         for i in range(n - 2, 0, -1):
             f[i] = max(f[i + 1], pre[i] - f[i + 1])
         return f[1]
+
 # leetcode submit region end(Prohibit modification and deletion)
-stones = [7,-6,5,10,5,-2,-6]
+stones = [-1, 2, -3, 4, -5]
+# stones = [7,-6,5,10,5,-2,-6]
+# stones = [-10,-12]
 print(Solution().stoneGameVIII(stones))
