@@ -30,14 +30,30 @@
 #  👍 107 👎 0
 
 from typing import List
+class Solution:
+    def hIndex(self, citations: List[int]) -> int:
+        """
+        二分O(logn)
+        """
+        lo, hi = 0, len(citations) - 1
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if citations[mid] < len(citations) - mid:
+                lo = mid + 1
+            else:
+                hi = mid
+        return len(citations) - lo
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
-        def check():
-            pass
-        lo, hi = 0, len(citations)
-        while lo < hi:
-            mid = (lo + hi) // 2
-            if citations[mid] >= len(citations) - mid:
-                hi = mid
+        """
+        遍历O(n)
+        """
+        n = len(citations)
+        for i in range(1, n + 1):
+            if citations[-i] < i:
+                break
+        return i - 1 if citations[-i] < i else i
 # leetcode submit region end(Prohibit modification and deletion)
+citations = [6,6,6,6,6,6]
+print(Solution().hIndex(citations))

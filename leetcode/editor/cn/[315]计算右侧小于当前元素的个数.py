@@ -60,5 +60,5 @@ class Solution:
             ans[i] = f(i)
         return ans
 # leetcode submit region end(Prohibit modification and deletion)
-nums = [5,2,6,1]
-print(Solution().countSmaller(nums))
+# nums = [5,2,6,1]
+# print(Solution().countSmaller(nums))
