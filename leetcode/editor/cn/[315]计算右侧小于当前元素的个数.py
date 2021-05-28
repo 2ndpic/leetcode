@@ -52,6 +52,30 @@ class Solution:
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
+        def merge(arr, l, m, r):
+            left, right = arr[l:m], arr[m:r]
+            i, j, k = 0, 0, l
+            while i < len(left) and j < len(right):
+                if left[i] <= right[j]:
+                    arr[k] = left[i]
+                    i += 1
+                else:
+                    arr[k] = right[j]
+                    j += 1
+                    ans[]
+                k += 1
+
+
+        def mergeSort(arr, l ,r):
+            if r - l == 1: return
+            mid = (l + r) // 2
+            mergeSort(arr, l, mid)
+            mergeSort(arr, mid ,r)
+            merge(arr, l, mid, r)
+
+        ans = [0] * len(nums)
+        merge(nums, 0, len(nums))
+        return ans
 
 # leetcode submit region end(Prohibit modification and deletion)
 # nums = [5,2,6,1]
