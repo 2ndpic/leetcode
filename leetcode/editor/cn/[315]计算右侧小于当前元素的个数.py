@@ -52,13 +52,7 @@ class Solution:
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
-        def f(idx):
-            pass
-        n = len(nums)
-        ans = [0] * n
-        for i in range(n-1, -1, -1):
-            ans[i] = f(i)
-        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
 # nums = [5,2,6,1]
 # print(Solution().countSmaller(nums))
