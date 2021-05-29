@@ -56,27 +56,35 @@ class Solution:
             left, right = arr[l:m], arr[m:r]
             i, j, k = 0, 0, l
             while i < len(left) and j < len(right):
-                if left[i] <= right[j]:
+                if left[i][1] <= right[j][1]:
                     arr[k] = left[i]
+                    ans[left[i][0]] += j
                     i += 1
                 else:
                     arr[k] = right[j]
                     j += 1
-                    ans[]
                 k += 1
+            while i < len(left):
+                arr[k] = left[i]
+                ans[left[i][0]] += j
+                k += 1
+                i += 1
+            arr[k:r] = right[j:]
 
-
-        def mergeSort(arr, l ,r):
+        def mergeSort(arr, l, r):
             if r - l == 1: return
             mid = (l + r) // 2
             mergeSort(arr, l, mid)
-            mergeSort(arr, mid ,r)
+            mergeSort(arr, mid, r)
             merge(arr, l, mid, r)
 
+        if not nums: return []
+        nums = [(i, v) for i, v in enumerate(nums)]
         ans = [0] * len(nums)
-        merge(nums, 0, len(nums))
+        mergeSort(nums, 0, len(nums))
         return ans
-
 # leetcode submit region end(Prohibit modification and deletion)
-# nums = [5,2,6,1]
-# print(Solution().countSmaller(nums))
+nums = [5,2,6,1] # [2,1,1,0]
+# nums = [1,2,7,8,5]
+nums = [26,78,27,100,33,67,90,23,66,5] # [2,6,2,6,2,3,3,1,1,0]
+print(Solution().countSmaller(nums))
