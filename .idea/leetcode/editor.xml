@@ -51,6 +51,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1074]元素和为目标值的子矩阵数量.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1074]元素和为目标值的子矩阵数量.py" />
+              <option name="questionId" value="1145" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1128]等价多米诺骨牌对的数量.py">
           <value>
             <LeetcodeEditor>
@@ -88,6 +96,14 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1208]尽可能使字符串相等.py" />
               <option name="questionId" value="1321" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1219]黄金矿工.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1219]黄金矿工.py" />
+              <option name="questionId" value="1331" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -144,6 +160,22 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1438]绝对差不超过限制的最长连续子数组.py" />
               <option name="questionId" value="1549" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1473]粉刷房子 III.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1473]粉刷房子 III.py" />
+              <option name="questionId" value="1583" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1482]制作 m 束花所需的最少天数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1482]制作 m 束花所需的最少天数.py" />
+              <option name="questionId" value="1605" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -211,11 +243,27 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1641]统计字典序元音字符串的数目.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1641]统计字典序元音字符串的数目.py" />
+              <option name="questionId" value="1761" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[171]Excel表列序号.py">
           <value>
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[171]Excel表列序号.py" />
               <option name="questionId" value="171" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1872]石子游戏 VIII.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1872]石子游戏 VIII.py" />
+              <option name="questionId" value="2002" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -315,6 +363,22 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[377]组合总和 Ⅳ.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[377]组合总和 Ⅳ.py" />
+              <option name="questionId" value="377" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[395]至少有 K 个重复字符的最长子串.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[395]至少有 K 个重复字符的最长子串.py" />
+              <option name="questionId" value="395" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[396]旋转函数.py">
           <value>
             <LeetcodeEditor>
@@ -336,6 +400,14 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[424]替换后的最长重复字符.py" />
               <option name="questionId" value="424" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[474]一和零.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[474]一和零.py" />
+              <option name="questionId" value="474" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -408,6 +480,22 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[567]字符串的排列.py" />
               <option name="questionId" value="567" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[576]出界的路径数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[576]出界的路径数.py" />
+              <option name="questionId" value="576" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[5775]准时抵达会议现场的最小跳过休息次数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[5775]准时抵达会议现场的最小跳过休息次数.py" />
+              <option name="questionId" value="2013" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -547,11 +635,27 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[810]黑板异或游戏.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[810]黑板异或游戏.py" />
+              <option name="questionId" value="828" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[816]模糊坐标.py">
           <value>
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[816]模糊坐标.py" />
               <option name="questionId" value="834" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[887]鸡蛋掉落.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[887]鸡蛋掉落.py" />
+              <option name="questionId" value="923" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -568,6 +672,22 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[888]公平的糖果棒交换.py" />
               <option name="questionId" value="924" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[896]单调数列.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[896]单调数列.py" />
+              <option name="questionId" value="932" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[89]格雷编码.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[89]格雷编码.py" />
+              <option name="questionId" value="89" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -632,6 +752,14 @@
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[997]找到小镇的法官.py" />
               <option name="questionId" value="1039" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[剑指 Offer 51]数组中的逆序对.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[剑指 Offer 51]数组中的逆序对.py" />
+              <option name="questionId" value="100318" />
             </LeetcodeEditor>
           </value>
         </entry>

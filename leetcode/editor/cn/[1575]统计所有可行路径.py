@@ -75,7 +75,6 @@
 
 from typing import List
 import functools
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countRoutes(self, locations: List[int], start: int, finish: int, fuel: int) -> int:
         @functools.lru_cache(None)
@@ -88,6 +87,26 @@ class Solution:
                 ans += dfs(i, e, r - abs(locations[i] - locations[s]))
             return ans
         return dfs(start, finish, fuel)
+
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def countRoutes(self, locations: List[int], start: int, finish: int, fuel: int) -> int:
+        """
+        由记忆化搜索可以推出状态和状态转移方程
+        f[i][j]从i位置出发剩余j到finish的的路径数目
+        f[i][j] = sum(f[k][j-abs(locations[i] - locations[k])])
+        第二维有先后关系，因此先从小打到遍历油量这一维度
+
+        初始化f[end][i] = 1
+        """
+        f = [[0] * (fuel + 1) for _ in range(len(locations))]
+        f[finish] = [1] * (fuel + 1)
+        for j in range(1, fuel + 1):
+            for i in range(len(locations)):
+                for k in range(len(locations)):
+                    if i == k or abs(locations[i] - locations[k]) > j: continue
+                    f[i][j] = (f[i][j] + f[k][j - abs(locations[i] - locations[k])]) % (10 ** 9 + 7)
+        return f[start][fuel]
 
 # leetcode submit region end(Prohibit modification and deletion)
 locations = [4,3,1];start = 1;finish = 0;fuel = 6
