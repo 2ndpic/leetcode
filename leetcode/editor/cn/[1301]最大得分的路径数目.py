@@ -45,44 +45,72 @@
 from typing import List
 import collections
 import functools
+class Solution:
+    def pathsWithMaxScore(self, board: List[str]) -> List[int]:
+        """
+        f[idx]表示从S到idx位置时的最大得分,idx = x * n + y,则 x = idx // n, y = idx % n
+        f[idx] = max(f[(x + 1, y)], f[(x + 1, y + 1), f[(x, y + 1)]] + board[x][y])
+        那么f[0]就是答案最大得分
+        对于方案数，用g数组来记录,g[idx]表示从S到idx位置时最大得分的方案数。
+        f[(x+1, y)], f[(x + 1, y + 1)], f[(x, y + 1)]的最大得分如果分别为2, 5, 5
+        那么g[(x, y)] = g[(x + 1, y + 1)] + g[(x, y + 1)]
+        """
+        n = len(board)
+        f = [-float('inf')] * (n * n)
+        f[-1] = 0
+        g = [0] * (n * n)
+        g[-1] = 1
+        for i in range(n * n - 2, -1, -1):
+            x, y = i // n, i % n
+            val = board[x][y]
+            if val == "X":
+                continue
+            else:
+                val = int(val) if val != "E" else 0
+            for dx, dy in ((1, 0), (1, 1), (0, 1)):
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < n and 0 <= ny < n:
+                    f[i] = max(f[i], f[nx * n + ny] + val)
+            for dx, dy in ((1, 0), (1, 1), (0, 1)):
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < n and 0 <= ny < n and f[i] == f[nx * n + ny] + val:
+                    g[i] += g[nx * n + ny]
+        if f[0] == float('-inf'):
+            return [0, 0]
+        return [f[0], g[0] % (10 ** 9 + 7)]
+
+
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def pathsWithMaxScore(self, board: List[str]) -> List[int]:
-        @functools.lru_cache(None)
-        def dfs1(x, y):
-            if x == n - 1 and y == n - 1:
-                return [0, True]
-            p = int(board[x][y]) if board[x][y] != "E" else 0
-            ans = 0
-            flag = False
-            for dx, dy in ((1, 1), (1, 0), (0, 1)):
-                nx, ny = x + dx, y + dy
-                if 0 <= nx < n and 0 <= ny < n and board[nx][ny] != "X":
-                    cur = dfs1(nx, ny)
-                    if cur[1]:
-                        flag = True
-                        ans = max(ans, cur[0] + p)
-            return [ans, flag]
-        def dfs2(x, y):
-            if x == n - 1 and y == n - 1:
-                return 0
-            p = int(board[x][y]) if board[x][y] != "E" else 0
-            paths = 0
-            for dx, dy in ((1, 1), (1, 0), (0, 1)):
-                nx, ny = x + dx, y + dy
-                if 0 <= nx < n and 0 <= ny < n and board[nx][ny] != "X":
-                    # if dfs2(nx, ny) == 0 and nx != n - 1 and ny != n - 1: continue
-                    if dfs1(nx, ny)[0] + p == ans: paths += 1
-            return paths
+        """
+        官解优化版
+        dp[i][0]表示S到达i位置的最大得分，dp[i][1]表示最大得分的方案数
+        """
+        def update(x, y, u, v):
+            if u >= n or v >= n or dp[u * n + v][0] == -1:
+                return
+            i, (score, paths) = x * n + y, dp[u * n + v]
+            if dp[i][0] == score: dp[i][1] = (dp[i][1] + paths) % (10 ** 9 + 7)
+            elif dp[i][0] < score: dp[i] = [score, paths]
+
         n = len(board)
-        ans, flag = dfs1(0, 0)
-        if not flag: return [ans, 0]
-        paths = dfs2(0, 0)
-        return [ans, paths % (10 ** 9 % 7)]
+        dp = [[-1, 0] for _ in range(n * n)] # dp[i][0]表示
+        dp[-1] = [0, 1]
+        for i in range(n * n - 2, -1, -1):
+            x, y = i // n , i % n
+            if board[x][y] != "X":
+                update(x, y, x + 1, y)
+                update(x, y, x + 1, y + 1)
+                update(x, y, x, y + 1)
+                if dp[i][0] != -1:
+                    dp[i][0] += (int(board[x][y]) if board[x][y] != "E" else 0)
+        return dp[0] if dp[0][0] != -1 else [0, 0]
+
         
 # leetcode submit region end(Prohibit modification and deletion)
 board = ["E23","2X2","12S"]
-# board = ["E12","1X1","21S"]
+board = ["E12","1X1","21S"]
 # board = ["E11","XXX","11S"]
 board = ["E11345","X452XX","3X43X4","422812","284522","13422S"]
 print(Solution().pathsWithMaxScore(board))
