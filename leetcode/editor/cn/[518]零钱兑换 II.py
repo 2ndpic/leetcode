@@ -66,6 +66,7 @@ class Solution:
         f[i][j]表示前i个coins凑到金额j的方案数
         f[i][j] = f[i-1][j] + f[i-1][j-coins[i-1]] + f[i-1][j-coins[i-1]*2] + ...
         f[i][j-coins[i-1]] = f[i-1][j-coins[i-1]] + f[i-1][j-coins[i-1]*2] + ...
+        这种优化是利用数学推导式。
         """
         f = [1] + [0] * amount
         for i in range(1, len(coins) + 1):
