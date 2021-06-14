@@ -71,7 +71,6 @@ class Solution:
                 stack.append(i)
         return cal(stack[::-1])
 
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def calculate(self, s: str) -> int:
         ops = [1]  # 栈顶记录当前位置所处的[所有括号]所[共同形成]的符号
@@ -100,7 +99,41 @@ class Solution:
                     i += 1
                 ret += num * sign
         return ret
+
+
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def calculate(self, s: str) -> int:
+        """
+        双栈解法
+        """
+        st_num, st_signs = [], []
+        ans, sign, n = 0, 1, len(s)
+        i = 0
+        while i < n:
+            if s[i] == " ":
+                i += 1
+            elif s[i] == "+" or s[i] == "-":
+                sign = 1 if s[i] == "+" else -1
+                i += 1
+            elif s[i] == "(":
+                st_num.append(ans)
+                st_signs.append(sign)
+                ans = 0
+                sign = 1
+                i += 1
+            elif s[i] == ")":
+                ans = st_num.pop() + st_signs.pop() * ans
+                i += 1
+            else:
+                num = 0
+                while i < n and s[i].isdigit():
+                    num = num * 10 + ord(s[i]) - ord("0")
+                    i += 1
+                ans += (sign * num)
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
-s = " -1 + 2 - 3 + 4 "
+# s = " -1 + 2 - 3 + 4 "
 s = "1+2+(3-(4+5))"
 print(Solution().calculate(s))
