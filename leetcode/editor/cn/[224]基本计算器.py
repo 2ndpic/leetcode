@@ -34,9 +34,6 @@
 #  
 #  Related Topics 栈 数学 
 #  👍 425 👎 0
-
-
-# leetcode submit region begin(Prohibit modification and deletion)
 def cal(arr):
     # 此arr数组只包含数字和+-符号,例如["2", "-", "1", "+", "2", "2"] 22 + 1 - 2
     ans = 0
@@ -73,6 +70,37 @@ class Solution:
             else:
                 stack.append(i)
         return cal(stack[::-1])
+
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def calculate(self, s: str) -> int:
+        ops = [1]  # 栈顶记录当前位置所处的[所有括号]所[共同形成]的符号
+        sign = 1   # 代表当前位置的符号
+        ret = 0
+        i, n = 0, len(s)
+        while i < n:
+            if s[i] == " ":
+                i += 1
+            elif s[i] == "+":
+                sign = ops[-1]
+                i += 1
+            elif s[i] == "-":
+                sign = -ops[-1]
+                i += 1
+            elif s[i] == "(":
+                ops.append(sign)
+                i += 1
+            elif s[i] == ")":
+                ops.pop()
+                i += 1
+            else:
+                num = 0
+                while i < n and s[i].isdigit():
+                    num = num * 10 + ord(s[i]) - ord("0")
+                    i += 1
+                ret += num * sign
+        return ret
 # leetcode submit region end(Prohibit modification and deletion)
 s = " -1 + 2 - 3 + 4 "
+s = "1+2+(3-(4+5))"
 print(Solution().calculate(s))
