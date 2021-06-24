@@ -66,3 +66,5 @@ class Solution:
 # leetcode submit region end(Prohibit modification and deletion)
 s = "abc"
 print(Solution().permutation(s))
+
+
