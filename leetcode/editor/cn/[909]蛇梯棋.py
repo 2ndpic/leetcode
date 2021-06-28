@@ -62,45 +62,6 @@
 
 from typing import List
 import collections
-class Solution:
-    def snakesAndLadders(self, board: List[List[int]]) -> int:
-        def get(v):
-            r = n - 1 - (v - 1) // n
-            if n % 2 == 0:
-                c = (v - 1) % n if r % 2 else n - 1 - (v - 1) % n
-            else:
-                c = (v - 1) % n if r % 2 == 0 else n - 1 - (v - 1) % n
-            return r, c
-        n = len(board)
-        q = collections.deque([1])
-        visited = [False] * (n * n + 1)
-        visited[1] = True
-        ans = 0
-        while q:
-            print(q)
-            for _ in range(len(q)):
-                val = q.popleft()
-                if val == n * n: return ans
-                x, y = get(val)
-                if board[x][y] != -1 and not visited[board[x][y]]:
-                    q.append(board[x][y])
-                    visited[board[x][y]] = True
-                    # continue
-                for dv in range(1, 7):
-                    nv = val + dv
-                    if nv > n * n or visited[nv]: continue
-                    x, y = get(nv)
-                    visited[nv] = True
-                    if board[x][y] == -1:
-                        q.append(nv)
-                    else:
-                        nv = board[x][y]
-                        if not visited[nv]:
-                            visited[nv] = True
-                            q.append(nv)
-            ans += 1
-        return -1
-
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
