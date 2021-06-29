@@ -31,21 +31,28 @@
 #  
 #  Related Topics 数学 字符串 
 #  👍 361 👎 0
-
+class Solution:
+    def convertToTitle(self, columnNumber: int) -> str:
+        ans = ""
+        while columnNumber:
+            rst = columnNumber % 26
+            if rst == 0:
+                rst = 26
+            ch = chr(rst - 1 + ord("A"))
+            ans = ch + ans
+            columnNumber = (columnNumber - rst) // 26
+        return ans
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def convertToTitle(self, columnNumber: int) -> str:
         ans = ""
         while columnNumber:
-            if columnNumber == 26:
-                ch = "Z"
-                ans = ch + ans
-                break
-            ch = chr(columnNumber % 26 - 1 + ord('A'))
-            ans = ch + ans
+            columnNumber -= 1
+            ch = chr(columnNumber % 26 + ord("A"))
+            ans += ch
             columnNumber //= 26
-        return ans
+        return ans[::-1]
 # leetcode submit region end(Prohibit modification and deletion)
-columnNumber = 52
+columnNumber = 701
 print(Solution().convertToTitle(columnNumber))
