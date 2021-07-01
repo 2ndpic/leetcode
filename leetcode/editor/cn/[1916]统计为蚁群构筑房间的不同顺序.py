@@ -48,8 +48,36 @@
 #  👍 14 👎 0
 
 from typing import List
+import collections
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def waysToBuildRooms(self, prevRoom: List[int]) -> int:
+        """
+        排列数:https://blog.csdn.net/diviner_s/article/details/113312446
+        乘法逆元:https://www.bilibili.com/video/BV12E411c7QH?from=search&seid=6199276706004726483
+        费马小定理:https://www.bilibili.com/video/BV14A411h7oD?from=search&seid=10797170791415726118
+        其他参考官解
+        """
+        def dfs(u):
+            for v in edge[u]:
+                dfs(v)
+                f[u] = (f[u] * f[v] * inv[cnt[v]]) % mod
+                cnt[u] += cnt[v]
+            f[u] = (f[u] * fac[cnt[u]]) % mod
+            cnt[u] += 1
 
+        mod = 10 ** 9 + 7
+        n = len(prevRoom)
+        fac, inv = [1] * n, [1] * n
+        for i in range(1, n):
+            fac[i] = (fac[i - 1] * i) % mod
+            inv[i] = pow(fac[i], mod - 2, mod)
+        f, cnt = [1] * n, [0] * n
+        edge = collections.defaultdict(list)
+        for u, v in enumerate(prevRoom):
+            edge[v].append(u)
+        dfs(0)
+        return f[0]
 # leetcode submit region end(Prohibit modification and deletion)
+prevRoom = [-1,0,1,2,1]
+print(Solution().waysToBuildRooms(prevRoom))
