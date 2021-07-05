@@ -70,26 +70,61 @@
 #  Related Topics 堆 设计 Ordered Map 
 #  👍 7 👎 0
 
+from typing import List
+from collections import defaultdict
+import sortedcontainers
+class MovieRentingSystem:
+
+    def __init__(self, n: int, entries: List[List[int]]):
+        self.t_price = dict()
+        self.t_valid = defaultdict(sortedcontainers.SortedList) # key=movie,value=(price, shop)
+        self.t_rent = sortedcontainers.SortedList()
+        for shop, movie, price in entries:
+            self.t_price[(shop, movie)] = price
+            self.t_valid[movie].add((price, shop))
+
+    def search(self, movie: int) -> List[int]:
+        return [i[1] for i in self.t_valid[movie][:5]]
+
+    def rent(self, shop: int, movie: int) -> None:
+        price = self.t_price[(shop, movie)]
+        self.t_valid[movie].discard((price, shop))
+        self.t_rent.add((price, shop, movie))
+
+    def drop(self, shop: int, movie: int) -> None:
+        price = self.t_price[(shop, movie)]
+        self.t_valid[movie].add((price, shop))
+        self.t_rent.discard((price, shop, movie))
+
+    def report(self) -> List[List[int]]:
+        return [[i[1], i[2]] for i in self.t_rent[:5]]
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class MovieRentingSystem:
 
     def __init__(self, n: int, entries: List[List[int]]):
-
+        self.t_price = dict()
+        self.t_valid = defaultdict(sortedcontainers.SortedSet) # key=movie,value=(price, shop)
+        self.t_rent = sortedcontainers.SortedSet()
+        for shop, movie, price in entries:
+            self.t_price[(shop, movie)] = price
+            self.t_valid[movie].add((price, shop))
 
     def search(self, movie: int) -> List[int]:
-
+        return [i[1] for i in self.t_valid[movie][:5]]
 
     def rent(self, shop: int, movie: int) -> None:
-
+        price = self.t_price[(shop, movie)]
+        self.t_valid[movie].discard((price, shop))
+        self.t_rent.add((price, shop, movie))
 
     def drop(self, shop: int, movie: int) -> None:
-
+        price = self.t_price[(shop, movie)]
+        self.t_valid[movie].add((price, shop))
+        self.t_rent.discard((price, shop, movie))
 
     def report(self) -> List[List[int]]:
-
-
-
+        return [[i[1], i[2]] for i in self.t_rent[:5]]
 # Your MovieRentingSystem object will be instantiated and called as such:
 # obj = MovieRentingSystem(n, entries)
 # param_1 = obj.search(movie)
