@@ -35,7 +35,7 @@ class Solution:
         """
         二分O(logn)
         """
-        lo, hi = 0, len(citations) - 1
+        lo, hi = 0, len(citations)
         while lo < hi:
             mid = (lo + hi) // 2
             if citations[mid] < len(citations) - mid:
@@ -55,5 +55,5 @@ class Solution:
                 break
         return i - 1 if citations[-i] < i else i
 # leetcode submit region end(Prohibit modification and deletion)
-citations = [6,6,6,6,6,6]
+citations = [0, 0 ,1]
 print(Solution().hIndex(citations))

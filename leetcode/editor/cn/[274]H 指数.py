@@ -32,6 +32,21 @@ class Solution:
         while ans < len(citations) and citations[ans] >= ans + 1:
             ans += 1
         return ans
+
+class Solution:
+    def hIndex(self, citations: List[int]) -> int:
+        def check(h):
+            ans = 0
+            for i in citations:
+                if i >= h:
+                    ans += 1
+            return ans >= h
+        lo, hi = 0, len(citations)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if check(mid): lo = mid + 1
+            else: hi = mid
+        return lo if check(lo) else lo - 1
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def hIndex(self, citations: List[int]) -> int:

@@ -55,7 +55,8 @@
 #  
 #  Related Topics 设计 哈希表 字符串 二分查找 
 #  👍 117 👎 0
-from
+import bisect
+import collections
 # leetcode submit region begin(Prohibit modification and deletion)
 class TimeMap:
 
@@ -63,15 +64,23 @@ class TimeMap:
         """
         Initialize your data structure here.
         """
-        self.memo = {}
+        self.memo = collections.defaultdict(list)
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        if key not in self.memo:
-            self.memo[key] = [""] * 101
-        self.memo[key][timestamp] = value
+        self.memo[key].append((timestamp, value))
 
 
     def get(self, key: str, timestamp: int) -> str:
+        arr = self.memo[key]
+        if not arr: return ""
+        lo, hi = 0, len(arr)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if arr[mid][0] > timestamp: hi = mid
+            else: lo = mid + 1
+
+        return arr[lo - 1][1] if lo > 0 else ""
+
 
 # Your TimeMap object will be instantiated and called as such:
 # obj = TimeMap()
