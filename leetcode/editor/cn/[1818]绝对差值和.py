@@ -62,17 +62,14 @@ import bisect
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minAbsoluteSumDiff(self, nums1: List[int], nums2: List[int]) -> int:
-        nums1_sort = sorted(nums1)
-        nums1_sort.append(10**7)
+        nums1_sort = sorted(nums1 + [10 ** 7])
         ans = sum(abs(i - j) for i, j in zip(nums1, nums2))
         diff = 10 ** 7
         for i, j in zip(nums1, nums2):
             idx = bisect.bisect_left(nums1_sort, j)
-            diff = min(diff, (min(abs(nums1_sort[idx] - j), abs(nums1_sort[idx - 1] - j))) - abs(i - j))
+            diff = min(diff, abs(nums1_sort[idx] - j) - abs(i - j), abs(nums1_sort[idx - 1] - j) - abs(i - j))
         ans += diff
         return ans % (10 ** 9 + 7)
-
-
 # leetcode submit region end(Prohibit modification and deletion)
 nums1 = [1,10,4,4,2,7]
 nums2 = [9,3,5,1,7,4]
