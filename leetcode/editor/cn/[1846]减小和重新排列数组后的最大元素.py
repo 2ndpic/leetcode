@@ -61,7 +61,6 @@
 #  👍 2 👎 0
 
 from typing import List
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maximumElementAfterDecrementingAndRearranging(self, arr: List[int]) -> int:
         arr.sort()
@@ -70,6 +69,21 @@ class Solution:
             if arr[i] - arr[i-1] > 1:
                 arr[i] = arr[i-1] + 1
         return arr[-1]
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def maximumElementAfterDecrementingAndRearranging(self, arr: List[int]) -> int:
+        """
+        O(n)解法
+        """
+        n = len(arr)
+        cnt = [0] * (n + 1)
+        for i in arr:
+            cnt[min(i, n)] += 1
+        miss = 0
+        for i in range(1, n + 1):
+            if cnt[i] == 0: miss += 1
+            else: miss -= min(cnt[i] - 1, miss)
+        return n - miss
 # leetcode submit region end(Prohibit modification and deletion)
 arr = [73,98,9]
 print(Solution().maximumElementAfterDecrementingAndRearranging(arr))
