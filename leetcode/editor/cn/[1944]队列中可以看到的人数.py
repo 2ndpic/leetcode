@@ -43,9 +43,38 @@
 #  
 #  Related Topics 栈 
 #  👍 4 👎 0
-
-
+from typing import List
+class Solution:
+    def canSeePersonsCount(self, heights: List[int]) -> List[int]:
+        """
+        倒序遍历维护一个单调递减栈
+        """
+        n = len(heights)
+        stack, ans = [], [0] * n
+        for i in range(n - 1, -1, -1):
+            while stack and heights[i] > stack[-1]:
+                stack.pop()
+                ans[i] += 1
+            if stack: ans[i] += 1
+            stack.append(heights[i])
+        return ans
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def canSeePersonsCount(self, heights: List[int]) -> List[int]:
+        """
+        倒序遍历维护一个单调递减栈
+        """
+        n = len(heights)
+        stack, ans = [], [0] * n
+        for i in range(n - 1, -1, -1):
+            while stack:
+                ans[i] += 1 # i 可以看到j
+                if heights[i] > stack[-1]:
+                    stack.pop()
+                else:
+                    break  # i 可以看到j但是看不到j右侧的所有人
+            stack.append(heights[i])
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
+heights = [10,6,8,5,11,9]
+print(Solution().canSeePersonsCount(heights))
