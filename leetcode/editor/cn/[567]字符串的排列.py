@@ -29,9 +29,6 @@
 #  
 #  Related Topics 双指针 Sliding Window 
 #  👍 246 👎 0
-
-import collections
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         l1, l2 = len(s1), len(s2)
@@ -51,7 +48,21 @@ class Solution:
             if s1_memo == s2_memo:
                 return True
         return False
-
+import collections
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        cnt = [0] * 26
+        for i in s1:
+            cnt[ord(i) - ord('a')] += 1
+        ws = len(s1)
+        cmt = [0] * 26
+        for i in range(len(s2)):
+            cmt[ord(s2[i]) - ord('a')] += 1
+            if i >= ws:
+                cmt[ord(s2[i - ws]) - ord('a')] -= 1
+            if cmt == cnt: return True
+        return False
 # leetcode submit region end(Prohibit modification and deletion)
 s1 = "aba"
 s2 = "eidbaooo"
