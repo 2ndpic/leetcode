@@ -40,6 +40,25 @@
 #  👍 1152 👎 0
 
 from typing import List
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        lo, hi = 0, len(nums)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if nums[mid] > nums[-1]: lo = mid + 1
+            else: hi = mid
+        if target <= nums[-1]:
+            lo, hi = lo, len(nums)
+        else:
+            lo, hi = 0, lo
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if nums[mid] < target: lo = mid + 1
+            else: hi = mid
+        return lo if lo < len(nums) and nums[lo] == target else -1
+
+
 # leetcode submit region begin(Prohibit modification and deletion)
 def bin_search(a, x, lo, hi):
     while lo < hi:

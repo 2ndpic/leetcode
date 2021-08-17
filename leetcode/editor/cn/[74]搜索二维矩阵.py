@@ -35,6 +35,17 @@
 #  👍 356 👎 0
 
 from typing import List
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        m, n = len(matrix), len(matrix[0])
+        lo, hi = 0, m * n - 1
+        while lo < hi:
+            mid = (lo + hi) // 2
+            x, y = mid // n, mid % n
+            if matrix[x][y] < target: lo = mid + 1
+            else: hi = mid
+        return True if matrix[lo // n][lo % n] == target else False
+
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
