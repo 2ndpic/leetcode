@@ -51,6 +51,7 @@
 from typing import List
 from functools import lru_cache
 from collections import defaultdict
+import heapq
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
         """
@@ -69,12 +70,64 @@ class Solution:
             g[u][v] = c
         res = dfs(src, 0)
         return res if res < float('inf') else -1
-
+class Solution:
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        """
+        动态规划
+        """
+        g = defaultdict(dict)
+        for u, v, c in flights:
+            g[u][v] = c
+        ans = g[src][dst] if dst in g[src] else float('inf')
+        f1 = {u:c for u, c in g[src].items()}
+        for i in range(1, k + 1):
+            f2 = defaultdict(lambda: float('inf'))
+            for k, price in f1.items():
+                for j in g[k]:
+                    f2[j] = min(f2[j], price + g[k][j])
+            f1 = f2
+            if dst in f1: ans = min(ans, f1[dst])
+        return ans if ans < float('inf') else -1
+class Solution:
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        f = [[float('inf')] * n for _ in range(k + 2)]
+        f[0][src], ans = 0, float('inf')
+        for t in range(1, k + 2):
+            for j, i, c in flights:
+                f[t][i] = min(f[t][i], f[t - 1][j] + c)
+            ans = min(ans, f[t][dst])
+        return ans if ans < float('inf') else -1
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
         g = defaultdict(dict)
         for u, v, c in flights:
             g[u][v] = c
+        pq = [(0, src, 0)]
+        costs = [float('inf') if i != src else 0 for i in range(n)]
+        stops = [0] * n
+        # seen = set()
+        while pq:
+            cost, vertex, stop = heapq.heappop(pq)
+            if vertex == dst: return cost
+            if stop >= k + 1: continue
+            # seen.add(vertex)
+            for u in g[vertex]:
+                # if u in seen: continue
+                if cost + g[vertex][u] < costs[u]:
+                    costs[u] = cost + g[vertex][u]
+                    stops[u] = stop + 1
+                    heapq.heappush(pq, (costs[u], u, stops[u]))
+                elif stop + 1 < stops[u]:
+                    heapq.heappush(pq, (cost + g[vertex][u], u, stop + 1))
+        return -1
 
 # leetcode submit region end(Prohibit modification and deletion)
+n = 11
+flights = [[0,3,3],[3,4,3],[4,1,3],[0,5,1],[5,1,100],[0,6,2],[6,1,100],[0,7,1],[7,8,1],[8,9,1],[9,1,1],[1,10,1],[10,2,1],[1,2,100]]
+src = 0
+dst = 2
+k = 4
+# n = 4; src = 0; dst = 3; k = 1
+# flights = [[0,1,10],[0,2,40],[1,2,20],[2,3,40]]
+print(Solution().findCheapestPrice(n, flights, src, dst, k))
