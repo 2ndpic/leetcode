@@ -89,22 +89,21 @@ class Solution:
             ans = max(ans, f[mask][1])
         return ans
 class Solution:
-def maxScoreWords(self, words: List[str], letters: List[str], score: List[int]) -> int:
-
-    def helper(start, curr_sum, counter):
-        nonlocal ans
-        if start > len(words):
-            return
-        ans = max(ans, curr_sum)
-        if sum(counter.values()) == 0: return
-        for j, w_counter in enumerate(words_counter[start:], start):
-            if all(counter[k] >= v for k, v in w_counter.items()):
-                helper(j + 1, curr_sum + words_score[j], counter - w_counter)
-    words_score = [sum(score[ord(c)-ord('a')] for c in word) for word in words]
-    words_counter = [Counter(word) for word in words]
-    ans = 0
-    helper(0, 0, Counter(letters))
-    return ans
+    def maxScoreWords(self, words: List[str], letters: List[str], score: List[int]) -> int:
+        def helper(start, curr_sum, counter):
+            nonlocal ans
+            if start > len(words):
+                return
+            ans = max(ans, curr_sum)
+            if sum(counter.values()) == 0: return
+            for j, w_counter in enumerate(words_counter[start:], start):
+                if all(counter[k] >= v for k, v in w_counter.items()):
+                    helper(j + 1, curr_sum + words_score[j], counter - w_counter)
+        words_score = [sum(score[ord(c)-ord('a')] for c in word) for word in words]
+        words_counter = [Counter(word) for word in words]
+        ans = 0
+        helper(0, 0, Counter(letters))
+        return ans
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
