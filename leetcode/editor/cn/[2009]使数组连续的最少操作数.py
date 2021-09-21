@@ -73,7 +73,7 @@ class Solution:
                 # 添加其他的操作数
                 cur += (n - (right_end_index - i + 1))
             else:
-                cur = pre_sum[n] - pre_sum[i]
+                cur = pre_sum[n] - pre_sum[i + 1]
                 cur += n - (n - 1 - i + 1)
             ans = min(ans, cur)
         return ans
