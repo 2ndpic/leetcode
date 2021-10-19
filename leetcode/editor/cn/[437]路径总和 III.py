@@ -65,5 +65,4 @@ class Solution:
             return ans
         prefix = defaultdict(int) # key是保存的前缀和，val是前缀和个数
         return dfs(root, 0)
-
 # leetcode submit region end(Prohibit modification and deletion)
