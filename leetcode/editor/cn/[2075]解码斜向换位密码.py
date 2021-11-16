@@ -74,5 +74,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def decodeCiphertext(self, encodedText: str, rows: int) -> str:
-
+        m, n = rows, len(encodedText) // rows
+        ans = []
+        for j in range(n):
+            for i in range(min(m, n - j)):
+                ans.append(encodedText[i * n + i + j])
+        return "".join(ans).rstrip()
 # leetcode submit region end(Prohibit modification and deletion)
+encodedText = " b  ac";rows = 2
+encodedText = "coding"; rows = 1
+encodedText = "iveo    eed   l te   olc"; rows = 4
+encodedText = "ch   ie   pr"; rows = 3
+print(Solution().decodeCiphertext(encodedText, rows))
