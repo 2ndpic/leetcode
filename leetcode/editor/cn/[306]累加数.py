@@ -51,7 +51,6 @@ class Solution:
         backtracking(0, -1, -1, -1)
         return ans[0] > 0
 
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isAdditiveNumber(self, num: str) -> bool:
         # 每次递归都会确定一个数字，这个数字有多种可能，具体几种取决于里面的 for 循环。
@@ -66,12 +65,60 @@ class Solution:
         if len(num) < 3: return False
         return dfs(0, 0, 0, 0)
 
+
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def stringAdd(self, s, firststart, firstEnd, secondStart, secondEnd):
+        third = []
+        carry, cur = 0, 0
+        while firstEnd >= firststart or secondEnd >= secondStart or carry != 0:
+            cur = carry
+            if firstEnd >= firststart:
+                cur += ord(s[firstEnd]) - ord('0')
+                firstEnd -= 1
+            if secondEnd >= secondStart:
+                cur += ord(s[secondEnd]) - ord('0')
+                secondEnd -= 1
+            carry = cur // 10
+            cur %= 10
+            third.append(chr(cur + ord('0')))
+        return "".join(third[::-1])
+
+    def valid(self, secondStart, secondEnd, num):
+        n = len(num)
+        firststart, firstEnd = 0, secondStart - 1
+        while secondEnd <= n - 1:
+            third = self.stringAdd(num, firststart, firstEnd, secondStart, secondEnd)
+            thirdStart = secondEnd + 1
+            thirdEnd = thirdStart + len(third) - 1
+            if thirdEnd >= n or num[thirdStart:thirdEnd + 1] != third:
+                break
+            if thirdEnd == n - 1:
+                return True
+            firststart, firstEnd = secondStart, secondEnd
+            secondStart, secondEnd = thirdStart, thirdEnd
+        return False
+
+
+    def isAdditiveNumber(self, num: str) -> bool:
+        n = len(num)
+        for secondStart in range(1, n - 1):
+            if num[0] == "0" and secondStart != 1:
+                break
+            for secondEnd in range(secondStart, n - 1):
+                if num[secondStart] == "0" and secondEnd != secondStart:
+                    break
+                if self.valid(secondStart, secondEnd, num):
+                    return True
+        return False
+
+
 # leetcode submit region end(Prohibit modification and deletion)
 # num = "112358"
 # num = "199100199"
 # num = "113"
 # num = "101"
 num = "0"
-# num = "1023"
+num = "1023"
 # num = "199111992"
 print(Solution().isAdditiveNumber(num))

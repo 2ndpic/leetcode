@@ -64,8 +64,8 @@ class Solution:
         for n, s, e in trips:
             delta[s] += n
             delta[e] -= n
-        for i in range(1, 1009):
-            delta[i] += delta[i-1]
+        for i in range(1009):
+            if i > 0: delta[i] += delta[i-1]
             if delta[i] > capacity:
                 return False
         return True
