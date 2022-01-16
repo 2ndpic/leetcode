@@ -557,6 +557,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1977]划分数字的方案数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1977]划分数字的方案数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1977" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1977]划分数字的方案数.py" />
+              <option name="titleSlug" value="number-of-ways-to-separate-numbers" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1986]完成任务的最少工作时间段.py">
           <value>
             <LeetcodeEditor>
@@ -788,6 +799,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[373]查找和最小的 K 对数字.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[373]查找和最小的 K 对数字.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com373" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[373]查找和最小的 K 对数字.py" />
+              <option name="titleSlug" value="find-k-pairs-with-smallest-sums" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[374]猜数字大小.py">
           <value>
             <LeetcodeEditor>
@@ -806,6 +828,17 @@
           <value>
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[377]组合总和 Ⅳ.py" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[378]有序矩阵中第 K 小的元素.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[378]有序矩阵中第 K 小的元素.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com378" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[378]有序矩阵中第 K 小的元素.py" />
+              <option name="titleSlug" value="kth-smallest-element-in-a-sorted-matrix" />
             </LeetcodeEditor>
           </value>
         </entry>

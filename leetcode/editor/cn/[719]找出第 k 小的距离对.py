@@ -26,6 +26,29 @@
 #  👍 150 👎 0
 
 from typing import List
+import heapq
+class Solution:
+    def smallestDistancePair(self, nums: List[int], k: int) -> int:
+        """
+        nums排序后
+        |nums[0] - nums[1]|, |nums[0] - nums[2]|, ..., |nums[0] - nums[n - 2]|, |nums[0] - nums[n - 1]|
+        |nums[1] - nums[2]|, |nums[1] - nums[3]|, ..., |nums[1] - nums[n - 1]|
+        |nums[2] - nums[3]|, |nums[2] - nums[4]|, ...
+        ...
+        |nums[n - 3] - nums[n - 2]|, |nums[n - 3] - nums[n - 1]|
+        |nums[n - 2] - nums[n - 1]|
+        多路归并,因为k可以得到N^2,所以会超时
+        """
+        n = len(nums)
+        nums.sort()
+        q = []
+        for i in range(1, n):
+            heapq.heappush(q, (nums[i] - nums[i - 1], i - 1, i))
+        for _ in range(k - 1):
+            d, i, j = heapq.heappop(q)
+            if j + 1 < n:
+                heapq.heappush(q, (nums[j + 1] - nums[i], i, j + 1))
+        return heapq.heappop(q)[0]
 class Solution:
     def smallestDistancePair(self, nums: List[int], k: int) -> int:
         # 超时
