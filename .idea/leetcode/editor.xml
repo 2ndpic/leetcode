@@ -232,6 +232,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1345]跳跃游戏 IV.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1345]跳跃游戏 IV.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1345" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1345]跳跃游戏 IV.py" />
+              <option name="titleSlug" value="jump-game-iv" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1347]制造字母异位词的最小步骤数.py">
           <value>
             <LeetcodeEditor>
@@ -243,6 +254,17 @@
           <value>
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[138]复制带随机指针的链表.py" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1420]生成数组.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1420]生成数组.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1420" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1420]生成数组.py" />
+              <option name="titleSlug" value="build-array-where-you-can-find-the-maximum-exactly-k-comparisons" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -600,6 +622,17 @@
             <LeetcodeEditor>
               <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[2014]重复 K 次的最长子序列.md" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[2014]重复 K 次的最长子序列.py" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[2045]到达目的地的第二短时间.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[2045]到达目的地的第二短时间.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com2045" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[2045]到达目的地的第二短时间.py" />
+              <option name="titleSlug" value="second-minimum-time-to-reach-destination" />
             </LeetcodeEditor>
           </value>
         </entry>
