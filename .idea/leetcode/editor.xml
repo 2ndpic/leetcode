@@ -403,6 +403,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1639]通过给定词典构造目标字符串的方案数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1639]通过给定词典构造目标字符串的方案数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1639" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1639]通过给定词典构造目标字符串的方案数.py" />
+              <option name="titleSlug" value="number-of-ways-to-form-a-target-string-given-a-dictionary" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1641]统计字典序元音字符串的数目.py">
           <value>
             <LeetcodeEditor>
@@ -1420,6 +1431,17 @@
           <value>
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[765]情侣牵手.py" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[76]最小覆盖子串.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[76]最小覆盖子串.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com76" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[76]最小覆盖子串.py" />
+              <option name="titleSlug" value="minimum-window-substring" />
             </LeetcodeEditor>
           </value>
         </entry>
