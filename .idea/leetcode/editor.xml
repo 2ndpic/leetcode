@@ -1653,6 +1653,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[962]最大宽度坡.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[962]最大宽度坡.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com962" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[962]最大宽度坡.py" />
+              <option name="titleSlug" value="maximum-width-ramp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[978]最长湍流子数组.py">
           <value>
             <LeetcodeEditor>
