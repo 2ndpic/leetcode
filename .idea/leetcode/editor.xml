@@ -293,6 +293,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1432]改变一个整数能得到的最大差值.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1432]改变一个整数能得到的最大差值.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1432" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1432]改变一个整数能得到的最大差值.py" />
+              <option name="titleSlug" value="max-difference-you-can-get-from-changing-an-integer" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1438]绝对差不超过限制的最长连续子数组.py">
           <value>
             <LeetcodeEditor>
