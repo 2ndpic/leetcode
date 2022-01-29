@@ -493,6 +493,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1765]地图中的最高点.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1765]地图中的最高点.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1765" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1765]地图中的最高点.py" />
+              <option name="titleSlug" value="map-of-highest-peak" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1833]雪糕的最大数量.py">
           <value>
             <LeetcodeEditor>
