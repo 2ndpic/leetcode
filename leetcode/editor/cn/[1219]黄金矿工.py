@@ -69,8 +69,6 @@ class Solution:
             for j in range(n):
                 ans = max(ans, backtracking(i, j))
         return ans
-
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def getMaximumGold(self, grid: List[List[int]]) -> int:
         def can_be_start(x, y):
@@ -104,6 +102,26 @@ class Solution:
                     grid[i][j] = 0
                     ans = max(ans, backtracking(i, j, tmp))
                     grid[i][j] = tmp
+        return ans
+
+
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def getMaximumGold(self, grid: List[List[int]]) -> int:
+        def backtracking(x, y, gold):
+            nonlocal ans
+            ans = max(ans, gold)
+            tmp, grid[x][y] = grid[x][y], 0
+            for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if 0 <= nx < m and 0 <= ny < n and grid[nx][ny]:
+                    backtracking(nx, ny, gold + grid[nx][ny])
+            grid[x][y] = tmp
+
+        m, n, ans = len(grid), len(grid[0]), 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j]:
+                    backtracking(i, j, grid[i][j])
         return ans
 # leetcode submit region end(Prohibit modification and deletion)
 grid = [[0,6,0],[5,8,7],[0,9,0]]
