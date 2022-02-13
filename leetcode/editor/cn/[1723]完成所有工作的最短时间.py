@@ -91,7 +91,6 @@ class Solution:
         backtracking(0, 0, [0] * k, 0)
         return ans
 
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumTimeRequired(self, jobs: List[int], k: int) -> int:
         def backtracking(limit, groups, path):
@@ -116,6 +115,45 @@ class Solution:
             if backtracking(mid, [0] * k, jobs[:]): hi = mid
             else: lo = mid + 1
         return lo
+
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def minimumTimeRequired(self, jobs: List[int], k: int) -> int:
+        """
+        思路正确，但是TLE
+        """
+        def number_of_trailingZeros(i):
+            ans = 0
+            while i & 1 == 0:
+                ans += 1
+                i >>= 1
+            return ans
+
+        n = len(jobs)
+        sum_jobs = [0] * (1 << n)
+
+        for i in range(1, 1 << n):
+            x = number_of_trailingZeros(i)
+            j = i - (1 << x)
+            sum_jobs[i] = sum_jobs[j] + jobs[x]
+
+        """
+        f[i][j]表示给[0,..,i]分配工作，工作的分配情况为j时，完成所有工作的最短时间
+        f[i][j] = min(max(f[i - 1][Cj'], sum(j')) for j' in j) j'是j的子集，Cj'是j'的补集
+        """
+        f = [[0] * (1 << n) for _ in range(2)]
+        f[0] = sum_jobs[:]
+
+        for i in range(1, k):
+            for j in range(1 << n):
+                minn = float('inf')
+                # 枚举子集
+                x = j
+                while x:
+                    minn = min(minn, max(f[(i - 1) & 1][j - x], sum_jobs[x]))
+                    x = (x - 1) & j
+                f[i & 1][j] = minn
+        return f[(k - 1) & 1][(1 << n) - 1]
 
 # leetcode submit region end(Prohibit modification and deletion)
 # jobs = [3,2,3];k = 3
