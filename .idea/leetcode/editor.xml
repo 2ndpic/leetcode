@@ -136,6 +136,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1189]“气球” 的最大数量.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1189]“气球” 的最大数量.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1189" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1189]“气球” 的最大数量.py" />
+              <option name="titleSlug" value="maximum-number-of-balloons" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[119]杨辉三角 II.py">
           <value>
             <LeetcodeEditor>
@@ -502,6 +513,17 @@
           <value>
             <LeetcodeEditor>
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[171]Excel表列序号.py" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1723]完成所有工作的最短时间.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1723]完成所有工作的最短时间.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1723" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1723]完成所有工作的最短时间.py" />
+              <option name="titleSlug" value="find-minimum-time-to-finish-all-jobs" />
             </LeetcodeEditor>
           </value>
         </entry>
