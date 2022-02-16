@@ -785,6 +785,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[2172]数组的最大与和.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[2172]数组的最大与和.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com2172" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[2172]数组的最大与和.py" />
+              <option name="titleSlug" value="maximum-and-sum-of-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[218]天际线问题.py">
           <value>
             <LeetcodeEditor>
@@ -1184,6 +1195,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[539]最小时间差.py" />
               <option name="titleSlug" value="minimum-time-difference" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[540]有序数组中的单一元素.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[540]有序数组中的单一元素.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com540" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[540]有序数组中的单一元素.py" />
+              <option name="titleSlug" value="single-element-in-a-sorted-array" />
             </LeetcodeEditor>
           </value>
         </entry>
