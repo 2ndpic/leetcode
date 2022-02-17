@@ -40,7 +40,17 @@
 #  0 <= row, column <= n 
 #  
 #  Related Topics 动态规划 👍 257 👎 0
+from functools import lru_cache
 
+class Solution:
+    def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
+        @lru_cache(None)
+        def dfs(steps, x, y):
+            if x < 0 or x >= n or y < 0 or y >= n: return 0.0
+            if steps == 0: return 1.0
+            return sum(dfs(steps - 1, x + 2 * dx, y + dy) + dfs(steps - 1, x + dx, y + 2 * dy) for dx, dy in dirs) / 8
+        dirs = ((1, -1), (1, 1), (-1, 1), (-1, -1))
+        return dfs(k, row, column)
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
