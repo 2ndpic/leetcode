@@ -101,7 +101,25 @@ class Solution:
                     f[i + w] = max(f[i + w], fi + (j & nums[cnt]))
                 t, w = t // 3, w * 3
         return max(f)
-
+class Solution:
+    def maximumANDSum(self, nums: List[int], numSlots: int) -> int:
+        """
+        f[mask]表示当篮子的状态为mask，篮子中数的总个数为cnt，并且我们放入的是数组中最开始的cnt个数的情况下的「最大与和」
+        """
+        mask_max = 3 ** numSlots
+        f = [0] * mask_max
+        for mask in range(1, mask_max):
+            cnt, dummy = 0, mask
+            while dummy:
+                cnt += dummy % 3
+                dummy //= 3
+            if cnt > len(nums): continue
+            dummy, w = mask, 1
+            for i in range(1, numSlots + 1):
+                if dummy % 3 > 0:
+                    f[mask] = max(f[mask], f[mask - w] + (nums[cnt - 1] & i))
+                dummy, w = dummy // 3, w * 3
+        return max(f)
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
@@ -125,6 +143,16 @@ class Solution:
                     f[s] = max(f[s], fi + ((j // 2 + 1) & nums[c]))
         return max(f)
 
+class Solution:
+    def maximumANDSum(self, nums: List[int], numSlots: int) -> int:
+        f = [0] * (1 << (2 * numSlots))
+        for mask in range(1, len(f)):
+            c = bin(mask).count("1")
+            if c > len(nums): continue
+            for i in range(numSlots * 2):
+                if mask & (1 << i):
+                    f[mask] = max(f[mask], f[mask ^ (1 << i)] + (nums[c - 1] & (i // 2 + 1)))
+        return max(f)
 
 
 # leetcode submit region end(Prohibit modification and deletion)
