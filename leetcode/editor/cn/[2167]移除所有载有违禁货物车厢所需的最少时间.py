@@ -85,7 +85,6 @@ class Solution:
             ans = min(ans, withoutFirst[i] + withoutSecond[i])
         return ans
 
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumTime(self, s: str) -> int:
         """
@@ -108,4 +107,27 @@ class Solution:
             presum += int(ch)
             ans = min(ans, prebest + 2 * presum - j)
         return min(ans + n - 1, n)
+
+class Solution:
+    def minimumTime(self, s: str) -> int:
+        n = len(s)
+        suf = [0] * (n + 1)
+        for i in range(n - 1, -1, -1):
+            suf[i] = suf[i + 1] if s[i] == "0" else min(suf[i + 1] + 2, n - i)
+        ans, pre = suf[0], 0
+        for i, ch in enumerate(s):
+            if ch == "1":
+                pre = min(pre + 2, i + 1)
+            ans = min(ans, pre + suf[i + 1])
+        return ans
+
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def minimumTime(self, s: str) -> int:
+        ans, pre = len(s), 0
+        for i, ch in enumerate(s):
+            if ch == "1":
+                pre = min(pre + 2, i + 1)
+            ans = min(ans, pre + (len(s) - 1 - i))
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
