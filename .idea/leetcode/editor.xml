@@ -701,6 +701,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1994]好子集的数目.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1994]好子集的数目.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1994" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1994]好子集的数目.py" />
+              <option name="titleSlug" value="the-number-of-good-subsets" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[2009]使数组连续的最少操作数.py">
           <value>
             <LeetcodeEditor>
