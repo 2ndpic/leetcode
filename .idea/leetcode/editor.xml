@@ -437,6 +437,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1627]带阈值的图连通性.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1627]带阈值的图连通性.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1627" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1627]带阈值的图连通性.py" />
+              <option name="titleSlug" value="graph-connectivity-with-threshold" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[162]寻找峰值.py">
           <value>
             <LeetcodeEditor>
