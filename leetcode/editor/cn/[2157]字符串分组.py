@@ -63,7 +63,7 @@
 #  Related Topics 位运算 并查集 字符串 👍 27 👎 0
 from typing import List
 from collections import defaultdict
-from collections import Counter
+from collections import Counter, deque
 class Solution:
     def groupStrings(self, words: List[str]) -> List[int]:
         """
@@ -161,8 +161,6 @@ class Solution:
                             union(mask, mask ^ (1 << i) | (1 << j))
         return [groups, maxsize]
 
-
-# leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def groupStrings(self, words: List[str]) -> List[int]:
         """
@@ -201,5 +199,51 @@ class Solution:
 
         d = Counter(find(w2m[word]) for word in words)
         return [len(d), max(d.values())]
+
+# leetcode submit region begin(Prohibit modification and deletion)
+class Solution:
+    def groupStrings(self, words: List[str]) -> List[int]:
+        """
+        广度优先搜索
+        """
+        def get_adjacent(mask):
+            adj = []
+            # 增添删除操作
+            for i in range(26):
+                adj.append(mask ^ (1 << i))
+            # 替换操作
+            for i in range(26):
+                if mask & (1 << i):
+                    for j in range(26):
+                        if not (mask & (1 << j)):
+                            adj.append(mask ^ (1 << i) | (1 << j))
+            return adj
+
+        wordmasks = Counter()
+        for word in words:
+            mask = 0
+            for ch in word:
+                mask |= (1 << (ord(ch) - ord('a')))
+            wordmasks[mask] += 1
+        used = set()
+        best, cnt = 0, 0
+        for mask, occ in wordmasks.items():
+            if mask in used:
+                continue
+            q = deque([mask])
+            used.add(mask)
+            total = occ  # total 记录联通分量的大小
+
+            while q:
+                u = q.popleft()
+                for v in get_adjacent(u):
+                    if v in wordmasks and v not in used:
+                        q.append(v)
+                        used.add(v)
+                        total += wordmasks[v]
+            best = max(best, total)
+            cnt += 1
+        return [cnt, best]
+
 # leetcode submit region end(Prohibit modification and deletion)
 print(Solution().groupStrings(["j"]))
