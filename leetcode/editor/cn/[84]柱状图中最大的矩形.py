@@ -35,6 +35,8 @@ class Solution:
             不断出栈直到栈为空或者柱形条i不再比top低。
         3.满足2之后，当前矩形条i进栈
         4.所有元素都要入栈出栈一次，所以时间复杂度O(n)
+
+        注意：实际上由于重复元素的存在，pop出来的元素在计算以其为高的面积的时候并不是准确的，但是可以保证最大值是准确的
         """
         # 为了最后所有元素出栈方便，heights数组末尾添加高度-1
         res = 0
@@ -44,7 +46,7 @@ class Solution:
             while stack and heights[i] <= heights[stack[-1]]:
                 cur = heights[stack.pop()]
                 if stack:
-                    res = max(res, cur * (i - stack[-1] - 1))  # 为啥子还要-1,自己画图体会一下
+                    res = max(res, cur * (i - stack[-1] - 1))  # i - (stack[-1] + 1)
                 else:
                     res = max(res, cur * i)  # 此时cur前面没有元素了，自己画图体会下
 
