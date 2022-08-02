@@ -26,6 +26,26 @@ class Solution:
                 ans = max(ans, curr)
         return ans
 
+
+class Solution:
+    def longestCycle(self, edges: List[int]) -> int:
+        time = [0] * len(edges)
+        clock, ans = 1, -1
+        for x, t in enumerate(time):
+            if t > 0: continue
+            start_time = clock
+            while x != -1:
+                if time[x]:
+                    if time[x] >= start_time:
+                        ans = max(ans, clock - time[x])
+                    break
+                time[x] = clock
+                clock += 1
+                x = edges[x]
+        return ans
+
+
+
 # leetcode submit region end(Prohibit modification and deletion)
 edges = [3,3,4,2,3]
 print(Solution().longestCycle(edges))
