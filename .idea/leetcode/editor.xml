@@ -135,6 +135,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1374]生成每种字符都是奇数个的字符串.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1374]生成每种字符都是奇数个的字符串.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1374" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1374]生成每种字符都是奇数个的字符串.py" />
+              <option name="titleSlug" value="generate-a-string-with-characters-that-have-odd-counts" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1408]数组中的字符串匹配.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1408]数组中的字符串匹配.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1408" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1408]数组中的字符串匹配.py" />
+              <option name="titleSlug" value="string-matching-in-an-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1420]生成数组.py">
           <value>
             <LeetcodeEditor>
@@ -399,6 +421,50 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[2357]使数组中所有元素都等于零.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[2357]使数组中所有元素都等于零.md" />
+              <option name="frontendQuestionId" value="leetcode.cn2357" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[2357]使数组中所有元素都等于零.py" />
+              <option name="titleSlug" value="make-array-zero-by-subtracting-equal-amounts" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[2358]分组的最大数量.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[2358]分组的最大数量.md" />
+              <option name="frontendQuestionId" value="leetcode.cn2358" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[2358]分组的最大数量.py" />
+              <option name="titleSlug" value="maximum-number-of-groups-entering-a-competition" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[2359]找到离给定两个节点最近的节点.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[2359]找到离给定两个节点最近的节点.md" />
+              <option name="frontendQuestionId" value="leetcode.cn2359" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[2359]找到离给定两个节点最近的节点.py" />
+              <option name="titleSlug" value="find-closest-node-to-given-two-nodes" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[2360]图中的最长环.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[2360]图中的最长环.md" />
+              <option name="frontendQuestionId" value="leetcode.cn2360" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[2360]图中的最长环.py" />
+              <option name="titleSlug" value="longest-cycle-in-a-graph" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[306]累加数.py">
           <value>
             <LeetcodeEditor>
@@ -495,6 +561,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[593]有效的正方形.py" />
               <option name="titleSlug" value="valid-square" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[622]设计循环队列.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[622]设计循环队列.md" />
+              <option name="frontendQuestionId" value="leetcode.cn622" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[622]设计循环队列.py" />
+              <option name="titleSlug" value="design-circular-queue" />
             </LeetcodeEditor>
           </value>
         </entry>
