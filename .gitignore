@@ -3,4 +3,5 @@ leetcode/editor/cn/doc/
 
 *.json
 *.xml
+editor.xml
 /.idea/
