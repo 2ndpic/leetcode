@@ -102,6 +102,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1282]用户分组.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1282]用户分组.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1282" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1282]用户分组.py" />
+              <option name="titleSlug" value="group-the-people-given-the-group-size-they-belong-to" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1331]数组序号转换.py">
           <value>
             <LeetcodeEditor>
@@ -465,6 +476,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[2366]将数组排序的最少替换次数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[2366]将数组排序的最少替换次数.md" />
+              <option name="frontendQuestionId" value="leetcode.cn2366" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[2366]将数组排序的最少替换次数.py" />
+              <option name="titleSlug" value="minimum-replacements-to-sort-the-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[306]累加数.py">
           <value>
             <LeetcodeEditor>
@@ -575,6 +597,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[636]函数的独占时间.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[636]函数的独占时间.md" />
+              <option name="frontendQuestionId" value="leetcode.cn636" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[636]函数的独占时间.py" />
+              <option name="titleSlug" value="exclusive-time-of-functions" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[675]为高尔夫比赛砍树.py">
           <value>
             <LeetcodeEditor>
@@ -605,6 +638,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[720]词典中最长的单词.py" />
               <option name="titleSlug" value="longest-word-in-dictionary" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[768]最多能完成排序的块 II.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[768]最多能完成排序的块 II.md" />
+              <option name="frontendQuestionId" value="leetcode.cn768" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[768]最多能完成排序的块 II.py" />
+              <option name="titleSlug" value="max-chunks-to-make-sorted-ii" />
             </LeetcodeEditor>
           </value>
         </entry>
