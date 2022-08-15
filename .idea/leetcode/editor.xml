@@ -696,6 +696,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[902]最大为 N 的数字组合.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[902]最大为 N 的数字组合.md" />
+              <option name="frontendQuestionId" value="leetcode.cn902" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[902]最大为 N 的数字组合.py" />
+              <option name="titleSlug" value="numbers-at-most-n-given-digit-set" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[952]按公因数计算最大组件大小.py">
           <value>
             <LeetcodeEditor>
