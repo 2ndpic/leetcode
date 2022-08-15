@@ -57,26 +57,17 @@ from functools import lru_cache
 class Solution:
     def countDigitOne(self, n: int) -> int:
         @lru_cache(None)
-        def f(i, is_limit, is_num):
+        def f(i, cnt1, is_limit):
             if i == len(s):
-                return (int(is_num), 0)
-            total, ans = 0, 0
-            if not is_num:
-                t, a = f(i + 1, False, False)
-                total += t
-                ans += a
+                return cnt1
+            ans = 0
             up = int(s[i]) if is_limit else 9
-            for d in range(0 if is_num else 1, up + 1):
-                t, a = f(i + 1, is_limit and d == up, True)
-                if d == 1:
-                    total += t
-                    ans += t + a
-                else:
-                    total += t
-                    ans += a
-            return (total, ans)
+            for d in range(up + 1):
+                ans += f(i + 1, cnt1 + (d == 1), is_limit and d == up)
+            return ans
+
         s = str(n)
-        return f(0, True, False)[1]
+        return f(0, 0, True)
 
 class Solution:
     def countDigitOne(self, n: int) -> int:
