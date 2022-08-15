@@ -51,7 +51,7 @@ class Solution:
             cur = len(digits)
             for i in range(d - 1):
                 ans += cur
-                cur *= cur
+                cur *= len(digits)
             return ans
 
         digits = list(map(int, digits))
