@@ -41,4 +41,26 @@ class Solution:
         return n - dp(n) + 1
 
 # leetcode submit region end(Prohibit modification and deletion)
-print(Solution().numDupDigitsAtMostN(123))
+from functools import lru_cache
+
+class Solution:
+    def numDupDigitsAtMostN(self, n: int) -> int:
+        @lru_cache(None)
+        def f(i, mask, is_limit, is_num, is_valid):
+            """
+            f(i)表示从高到低第i位及其之后数位的合法方案数
+            """
+            if i == len(s):
+                return int(is_valid)
+            ans = 0
+            if not is_num:
+                ans += f(i + 1, 0, False, False, False)
+            up = int(s[i]) if is_limit else 9
+            for d in range(0 if is_num else 1, up + 1):
+                ans += f(i + 1, mask | (1 << d), is_limit and d == up, True, is_valid or mask >> d & 1 == 1)
+            return ans
+
+        s = str(n)
+        return f(0, 0, True, False, False)
+
+print(Solution().numDupDigitsAtMostN(11))
