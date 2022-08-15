@@ -31,6 +31,56 @@
 class Solution:
     def countDigitOne(self, n: int) -> int:
         """
+        数位DP
+        """
+        def dp(x):
+            t = x
+            nums = []
+            while t:
+                nums.append(t % 10)
+                t //= 10
+            d = len(nums)
+            ans = 0
+            for k in range(d - 1, -1, -1):
+                cur = nums[k]
+                base = 10 ** k
+                # k位置前面的高位不是最大值的情况
+                ans += (n // base // 10) * base
+                # k位置前面的高位是最大值的情况
+                if cur == 1:
+                    ans += (n % base) + 1
+                elif cur > 1:
+                    ans += base
+            return ans
+        return dp(n)
+from functools import lru_cache
+class Solution:
+    def countDigitOne(self, n: int) -> int:
+        @lru_cache(None)
+        def f(i, is_limit, is_num):
+            if i == len(s):
+                return (int(is_num), 0)
+            total, ans = 0, 0
+            if not is_num:
+                t, a = f(i + 1, False, False)
+                total += t
+                ans += a
+            up = int(s[i]) if is_limit else 9
+            for d in range(0 if is_num else 1, up + 1):
+                t, a = f(i + 1, is_limit and d == up, True)
+                if d == 1:
+                    total += t
+                    ans += t + a
+                else:
+                    total += t
+                    ans += a
+            return (total, ans)
+        s = str(n)
+        return f(0, True, False)[1]
+
+class Solution:
+    def countDigitOne(self, n: int) -> int:
+        """
         假设n是123456，考虑从[0,123456]这些数，百位上的1一共有多少个
         存在千位数的：(n // 1000) * 100 = 123 * 100
         不存在千位数的[0,..,n‘]，n'=n%1000=456，百位上的1一共有:

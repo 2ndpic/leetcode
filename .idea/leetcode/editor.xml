@@ -443,6 +443,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[233]数字 1 的个数.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[233]数字 1 的个数.md" />
+              <option name="frontendQuestionId" value="leetcode.cn233" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[233]数字 1 的个数.py" />
+              <option name="titleSlug" value="number-of-digit-one" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[2357]使数组中所有元素都等于零.py">
           <value>
             <LeetcodeEditor>
