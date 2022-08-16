@@ -168,6 +168,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1397]找到所有好字符串.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[1397]找到所有好字符串.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1397" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[1397]找到所有好字符串.py" />
+              <option name="titleSlug" value="find-all-good-strings" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[1408]数组中的字符串匹配.py">
           <value>
             <LeetcodeEditor>
